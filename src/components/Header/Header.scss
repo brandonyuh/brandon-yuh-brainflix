@@ -5,8 +5,8 @@
   background-color: $background;
   display: flex;
   flex-wrap: wrap;
-  padding: 4%;
-  justify-content: center;
+  padding: 1rem 4%;
+  justify-content: space-between;
   &__logo {
     width: 100%;
     display: flex;
@@ -41,15 +41,19 @@
   &__upload {
     text-align: center;
     width: 100%;
-    padding: 4%;
+    padding: 0.8rem;
     background-color: $button-color;
-    color: $button-text;
     border: 0;
     background-image: url("../../assets/images/upload.svg");
     background-repeat: no-repeat;
     background-position: 10px center;
-    text-transform: uppercase;
     border-radius: 5px;
     margin-bottom: 0.3rem;
+    text-decoration: none;
+    color: $button-text;
+    text-transform: uppercase;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
