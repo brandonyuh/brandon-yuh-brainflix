@@ -1,5 +1,6 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .header {
   background-color: $background;
@@ -7,6 +8,7 @@
   flex-wrap: wrap;
   padding: 1rem 4%;
   justify-content: space-between;
+  align-items: center;
   &__logo {
     width: 100%;
     display: flex;
@@ -57,6 +59,36 @@
     text-transform: uppercase;
     &:hover {
       cursor: pointer;
+    }
+  }
+  @include tablet {
+    flex-wrap: nowrap;
+    gap: 5%;
+    &__img {
+      width: 120px;
+    }
+    &__logo {
+      justify-content: flex-start;
+      margin: 0;
+      margin-left: 1%;
+    }
+
+    &__profile {
+      order: 1;
+      margin: 0;
+    }
+
+    &__input {
+      flex-grow: 5;
+      width: 200px;
+      margin: 0;
+    }
+    &__upload {
+      width: 500px;
+      margin: 0;
+    }
+    &__icon {
+      margin-left: -15px;
     }
   }
 }
