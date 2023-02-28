@@ -1,0 +1,19 @@
+@use "variables" as *;
+
+@font-face {
+  font-family: "AvenirNext LT Pro";
+  src: url("../../assets/font/AvenirNextLTPro-Regular.eot");
+  src: url("../../assets/font/AvenirNextLTPro-Regular.eot?#iefix") format("embedded-opentype"), url("../../assets/font/AvenirNextLTPro-Regular.woff2") format("woff2"), url("../../assets/font/AvenirNextLTPro-Regular.woff") format("woff"), url("../../assets/font/AvenirNextLTPro-Regular.ttf") format("truetype"), url("../../assets/font/AvenirNextLTPro-Regular.svg#AvenirNextLTPro-Regular") format("svg");
+  font-weight: $font-regular;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AvenirNext LT Pro";
+  src: url("../../assets/font/AvenirNextLTPro-Bold.eot");
+  src: url("../../assets/font/AvenirNextLTPro-Bold.eot?#iefix") format("embedded-opentype"), url("../../assets/font/AvenirNextLTPro-Bold.woff2") format("woff2"), url("../../assets/font/AvenirNextLTPro-Bold.woff") format("woff"), url("../../assets/font/AvenirNextLTPro-Bold.ttf") format("truetype"), url("../../assets/font/AvenirNextLTPro-Bold.svg#AvenirNextLTPro-Bold") format("svg");
+  font-weight: $font-bold;
+  font-style: normal;
+  font-display: swap;
+}

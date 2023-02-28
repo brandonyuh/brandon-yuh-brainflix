@@ -1,0 +1,55 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+  background-color: $background;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4%;
+  justify-content: center;
+  &__logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  &__search {
+    width: 83%;
+  }
+  &__input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 38px;
+    border: $input-border;
+    font-size: 0.7rem;
+    background-image: url("../../assets/images/search.svg");
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    font-weight: $font-bold;
+    border-radius: 5px;
+    background-color: $input-background;
+    margin-bottom: 1rem;
+  }
+  &__icon {
+    width: 2.3rem;
+    height: 2.3rem;
+    margin-left: 0.7rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: left;
+  }
+  &__upload {
+    text-align: center;
+    width: 100%;
+    padding: 4%;
+    background-color: $button-color;
+    color: $button-text;
+    border: 0;
+    background-image: url("../../assets/images/upload.svg");
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin-bottom: 0.3rem;
+  }
+}
