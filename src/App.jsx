@@ -1,10 +1,15 @@
+import { useState } from "react";
 import "./App.scss";
 import "./styles/global.scss";
 import Header from "./components/Header/Header";
+import Content from "./components/Content/Content";
 
 function App() {
   return (
-    <Header />
+    <>
+      <Header />
+      <Content />
+    </>
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />
