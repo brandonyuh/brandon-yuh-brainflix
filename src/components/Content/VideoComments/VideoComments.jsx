@@ -1,9 +1,9 @@
 import { convertDate, relativeTime } from "../../../Utilities";
 
-function VideoComments(props) {
+function VideoComments({ comments }) {
   return (
     <div className="comments">
-      {props.comments.map((comment) => (
+      {comments.map((comment) => (
         <article key={comment.id} className="comment">
           <p>{comment.name}</p>
           <p>{convertDate(comment.timestamp)}</p>

@@ -1,11 +1,11 @@
 import "./VideoList.scss";
-function VideoList(props) {
+function VideoList({ videos, id, handleChangeVideo}) {
   return (
     <div className="videolist">
-      {props.videos
-        .filter((video) => video.id !== props.id)
+      {videos
+        .filter((video) => video.id !== id)
         .map((video) => (
-          <article className="videolist__video" key={video.id} onClick={() => props.handleChangeVideo(video.id)}>
+          <article className="videolist__video" key={video.id} onClick={() => handleChangeVideo(video.id)}>
             <img src={video.image} alt="" className="videolist__image" />
             <p>{video.title}</p>
             <p>{video.channel}</p>

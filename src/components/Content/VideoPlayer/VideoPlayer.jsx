@@ -1,9 +1,9 @@
 import "./VideoPlayer.scss";
-function VideoPlayer(props) {
+function VideoPlayer({image}) {
   return (
     <>
       <div>
-        <video className="video" controls poster={props.image}>
+        <video className="video" controls poster={image}>
         </video>
       </div>
     </>
