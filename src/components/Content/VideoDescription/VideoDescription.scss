@@ -1,0 +1,46 @@
+@use "../../../styles/partials/variables" as *;
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/colors" as *;
+.description {
+  padding: 0rem $padding-default;
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem 0rem;
+    border-bottom: $border;
+  }
+  &__details {
+    &-container {
+      border-bottom: $border;
+      padding: 1rem 0rem;
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 1rem;
+    }
+  }
+  &__data {
+    width: 50%;
+    font-size: 0.8rem;
+    color: $font-light;
+    //
+    align-items: center;
+    &--channel {
+      font-weight: bold;
+      color: black;
+    }
+    &--image {
+      margin-right: 0.5em;
+    }
+    &-likes{
+        display: flex;   
+    }
+    &-views{
+        display: flex;
+    }
+  }
+
+  &__text {
+    font-size: 0.84rem;
+    padding: 1rem 0rem;
+  }
+}
