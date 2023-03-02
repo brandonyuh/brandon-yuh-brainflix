@@ -19,8 +19,8 @@ const getVideoList = () => {
 };
 
 function Content() {
-  let videoList = getVideoList();
-  let currentVideoDetails = getVideoDetails(videoList[0].id);
+  const videoList = getVideoList();
+  const currentVideoDetails = getVideoDetails(videoList[0].id);
 
   const [videos, setVideos] = useState(videoList);
   const [video, setVideo] = useState(currentVideoDetails);
