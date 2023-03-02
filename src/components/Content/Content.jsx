@@ -4,32 +4,38 @@ import VideoData from "../../data/videos.json";
 import VideoDetails from "../../data/video-details.json";
 import VideoPlayer from "./VideoPlayer/VideoPlayer";
 import VideoDescription from "./VideoDescription/VideoDescription";
+import VideoComments from "./VideoComments/VideoComments";
+import VideoList from "./VideoList/VideoList";
+
+const getVideoDetails = (id) => {
+  //replace with API later!
+  const filteredVideos = VideoDetails.filter((video) => video.id === id);
+  return filteredVideos[0];
+};
+
+const getVideoList = () => {
+  //replace with API later!
+  return VideoData;
+};
 
 function Content() {
-  const [videos, setVideos] = useState(VideoData);
-  const [currentVideo, setCurrentVideo] = useState(videos[0]);
-  const [id, setId] = useState(videos[0]);
+  let videoList = getVideoList();
+  let currentVideoDetails = getVideoDetails(videoList[0].id);
 
-  let currentVideoDetails = VideoDetails[0];
+  const [videos, setVideos] = useState(videoList);
+  const [video, setVideo] = useState(currentVideoDetails);
 
-  const [duration, setDuration] = useState(currentVideoDetails.duration);
-
-  const [title, setTitle] = useState(currentVideoDetails.title);
-  const [channel, setChannel] = useState(currentVideoDetails.channel);
-  const [timestamp, setTimestamp] = useState(currentVideoDetails.timestamp);
-  const [views, setViews] = useState(currentVideoDetails.views);
-  const [likes, setLikes] = useState(currentVideoDetails.likes);
-  const [description, setDescription] = useState(currentVideoDetails.description);
-  const [comments, setComments] = useState(currentVideoDetails.comments);
-  const [image, setImage] = useState(currentVideoDetails.image);
+  const handleChangeVideo = (id) => {
+    setVideo(getVideoDetails(id));
+  };
 
   return (
     <>
-      {/* {videos.map((video) => (
-        <img src={video.image} alt="" />
-      ))} */}
-      <VideoPlayer image={image} duration={duration} description={description} />
-      <VideoDescription />
+      <VideoPlayer image={video.image} duration={video.duration} description={video.description} />
+
+      <VideoDescription title={video.title} channel={video.channel} timestamp={video.timestamp} views={video.views} likes={video.likes} description={video.description} />
+      <VideoComments comments={video.comments} />
+      <VideoList id={video.id} videos={videos} handleChangeVideo={handleChangeVideo} />
     </>
   );
 }
