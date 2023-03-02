@@ -1,10 +1,14 @@
 function VideoComments(props) {
+  const convertDate = (date) => {
+    let newDate = new Date(date);
+    return newDate.toLocaleDateString();
+  };
   return (
     <div className="comments">
       {props.comments.map((comment) => (
         <article key={comment.id} className="comment">
           <p>{comment.name}</p>
-          <p>{comment.timestamp}</p>
+          <p>{convertDate(comment.timestamp)}</p>
           <p>{comment.comment}</p>
         </article>
       ))}
