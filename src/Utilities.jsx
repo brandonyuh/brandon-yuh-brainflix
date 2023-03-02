@@ -1,10 +1,10 @@
-const convertDate = (date) => {
-  let newDate = new Date(date);
+const convertDate = (timeStamp) => {
+  let newDate = new Date(timeStamp);
   return newDate.toLocaleDateString();
 };
 
-const relativeTime = (date) => {
-  let seconds = (new Date() - new Date(date)) / 1000;
+const relativeTime = (timeStamp) => {
+  let seconds = (new Date() - new Date(timeStamp)) / 1000;
 
   let output = ``;
   if (seconds < 60) {
