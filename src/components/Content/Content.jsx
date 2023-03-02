@@ -31,8 +31,7 @@ function Content() {
 
   return (
     <>
-      <VideoPlayer image={video.image} duration={video.duration} description={video.description} />
-
+      <VideoPlayer image={video.image} />
       <VideoDescription title={video.title} channel={video.channel} timestamp={video.timestamp} views={video.views} likes={video.likes} description={video.description} />
       <VideoComments comments={video.comments} />
       <VideoList id={video.id} videos={videos} handleChangeVideo={handleChangeVideo} />
