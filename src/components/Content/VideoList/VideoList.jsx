@@ -1,5 +1,5 @@
 import "./VideoList.scss";
-function VideoList({ videos, id, handleChangeVideo}) {
+function VideoList({ videos, id, handleChangeVideo }) {
   return (
     <div className="videolist">
       {videos
