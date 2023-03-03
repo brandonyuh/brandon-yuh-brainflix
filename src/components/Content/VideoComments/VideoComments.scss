@@ -9,6 +9,9 @@
     font-size: 0.8rem;
     margin-bottom: 0.5rem;
   }
+  @include desktop {
+    padding: 0;
+  }
 }
 .comment {
   display: flex;
@@ -59,6 +62,7 @@
     &--date {
       color: $font-light;
       margin-bottom: 0.5rem;
+      
     }
     &--absolute {
       visibility: hidden;
@@ -107,7 +111,7 @@
     display: flex;
     justify-content: space-between;
     line-height: 1.25rem;
-  
+
     &__add {
       display: flex;
       justify-content: space-between;
@@ -122,9 +126,17 @@
       margin-left: 1.5rem;
       height: 2.5rem;
     }
-    &__input{
+    &__input {
       width: 200%;
       height: 2.5rem;
     }
+  }
+  @include desktop {
+    padding: 1rem 0rem;
+    padding-right: $padding-default;
+    &__text {
+      padding-right: $padding-default;
+    }
+
   }
 }
