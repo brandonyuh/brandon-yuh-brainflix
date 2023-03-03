@@ -11,6 +11,9 @@
   }
   @include desktop {
     padding: 0;
+    &--number {
+      margin-top: 2rem;
+    }
   }
 }
 .comment {
@@ -38,7 +41,7 @@
     margin-right: 1rem;
     margin-top: 1.5rem;
   }
-  &__form{
+  &__form {
     width: 100%;
   }
   &__anon {
@@ -64,7 +67,6 @@
     &--date {
       color: $font-light;
       margin-bottom: 0.5rem;
-      
     }
     &--absolute {
       visibility: hidden;
@@ -109,7 +111,7 @@
   }
 
   @include tablet {
-    padding: 1.75rem 0rem;
+    padding: 1rem 0rem;
     display: flex;
     justify-content: space-between;
     line-height: 1.25rem;
@@ -121,7 +123,7 @@
     }
     &__button {
       width: 25rem;
-      padding-left: 0.5rem;
+      padding-left: 1.5rem;
       flex-shrink: 1;
       font-size: 0.7rem;
       margin: 0;
@@ -134,11 +136,10 @@
     }
   }
   @include desktop {
-    padding: 1rem 0rem;
+    padding: 1.2rem 0rem;
     padding-right: $padding-default;
     &__text {
       padding-right: $padding-default;
     }
-
   }
 }

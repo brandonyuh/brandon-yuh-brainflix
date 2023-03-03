@@ -79,6 +79,7 @@
     &__profile {
       order: 1;
       margin: 0;
+      top: 2px;
     }
 
     &__input {
@@ -89,9 +90,6 @@
     &__upload {
       width: 25rem;
       margin: 0;
-    }
-    &__profile {
-      position: static;
     }
 
     &__icon {
