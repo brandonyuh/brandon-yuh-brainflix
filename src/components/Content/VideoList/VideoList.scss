@@ -1,12 +1,43 @@
+@use "../../../styles/partials/variables" as *;
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/colors" as *;
+
 .videolist {
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  padding: 0rem $padding-default;
+
+  &__title {
+    color: $font-light;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin: 1.2rem 0;
   }
-  &__video {
-    &:hover {
-      cursor: pointer;
+}
+
+.thumbnail {
+  display: flex;
+  column-gap: 1rem;
+  margin-bottom: 0.8rem;
+  &:hover {
+    cursor: pointer;
+  }
+  &__preview {
+    width: 180px;
+    height: 60px;
+    &--image {
+      width: 100%;
+      height: 100%;
+      border-radius: $border-radius;
+      object-fit: cover;
+    }
+  }
+
+  &__details {
+    width: 100%;
+    font-size: 0.8rem;
+    &--title {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
     }
   }
 }
