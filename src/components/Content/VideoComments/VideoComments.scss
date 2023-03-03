@@ -1,0 +1,75 @@
+@use "../../../styles/partials/variables" as *;
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/colors" as *;
+
+.comments {
+  padding: 0rem $padding-default;
+  &--number {
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+}
+.comment {
+  display: flex;
+  border-bottom: $border;
+  padding: 1rem 0rem;
+
+  &__title {
+    color: $font-light;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+  &__profile {
+    margin: 0;
+  }
+  &__icon {
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: left;
+    margin: 0;
+    background: red;
+    margin-right: 1rem;
+    margin-top: 1rem;
+  }
+  &__anon {
+    background-color: #e1e1e1;
+    margin-top: 0;
+  }
+
+  &__button {
+    background-image: url("../../../assets/images/add_comment.svg");
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    width: 100%;
+  }
+  &__data {
+    width: 100%;
+
+    &--name {
+      font-weight: bold;
+      font-size: 0.75rem;
+    }
+    &--date {
+      color: $font-light;
+    }
+  }
+  &__input {
+    width: 100%;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: $input-background;
+  }
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__text{
+    font-size: 0.84rem;
+  }
+}

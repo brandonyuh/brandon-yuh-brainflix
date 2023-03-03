@@ -45,19 +45,13 @@
   }
 
   &__upload {
-    text-align: center;
     width: 100%;
-    padding: 0.8rem;
-    background-color: $button-color;
-    border: 0;
     background-image: url("../../assets/images/upload.svg");
     background-repeat: no-repeat;
     background-position: 10px center;
-    border-radius: $border-radius;
     margin-bottom: 0.3rem;
     text-decoration: none;
-    color: $button-text;
-    text-transform: uppercase;
+
     &:hover {
       cursor: pointer;
       background-color: $button-hover;
