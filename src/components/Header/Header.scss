@@ -31,6 +31,10 @@
     border-radius: $border-radius;
     background-color: $input-background;
     margin-bottom: 1rem;
+    &::placeholder {
+      color: $font-dark;
+      opacity: 1;
+    }
   }
   &__profile {
     margin: 0;

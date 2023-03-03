@@ -87,6 +87,10 @@
     font-weight: bold;
     background-color: $input-background;
     border-radius: $border-radius;
+    &::placeholder {
+      color: $font-dark;
+      opacity: 1;
+    }
   }
 
   &__heading {
