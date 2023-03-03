@@ -74,4 +74,15 @@
       line-height: 1.4rem;
     }
   }
+  @include desktop{
+    padding: 0;
+    &__details{
+      &-container{
+        padding-right: $padding-default;
+      }
+    }
+    &__text{
+      padding-right: $padding-default;
+    }
+  }
 }
