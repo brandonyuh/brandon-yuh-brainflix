@@ -10,12 +10,12 @@ function VideoComments({ comments }) {
         <div className="comment__profile">
           <img className="comment__icon" src={ProfileIcon} alt="Profile" />
         </div>
-        <div className="comment__data comment__add">
-          <div>
-            <p className="comment__title">Join the conversation</p>
+        <div>
+          <p className="comment__title">Join the conversation</p>
+          <div className="comment__data comment__add">
             <textarea className="comment__input" name="" id="" cols="30" rows="5" placeholder="Add a new comment"></textarea>
-          </div>
           <button className="button comment__button">Comment</button>
+          </div>
         </div>
       </article>
       {comments.map((comment) => (

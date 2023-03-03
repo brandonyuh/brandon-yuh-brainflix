@@ -34,7 +34,7 @@
     margin: 0;
     background: red;
     margin-right: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
   &__anon {
     background-color: $unavailable;
@@ -100,5 +100,31 @@
 
   &__text {
     font-size: 0.84rem;
+  }
+
+  @include tablet {
+    padding: 1.75rem 0rem;
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.25rem;
+  
+    &__add {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__button {
+      width: 25rem;
+      padding-left: 0.5rem;
+      flex-shrink: 1;
+      font-size: 0.7rem;
+      margin: 0;
+      margin-left: 1.5rem;
+      height: 2.5rem;
+    }
+    &__input{
+      width: 200%;
+      height: 2.5rem;
+    }
   }
 }
