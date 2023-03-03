@@ -41,4 +41,15 @@
       margin-bottom: 0.5rem;
     }
   }
+
+  @include tablet {
+    margin-bottom: 1.5rem;
+    &__preview {
+      width: 110px;
+      height: 65px;
+    }
+    &__details {
+      width: 22%;
+    }
+  }
 }
