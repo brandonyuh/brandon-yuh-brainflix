@@ -1,4 +1,18 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 .content {
   display: flex;
   flex-direction: column;
+  @include desktop {
+    &__belowvideo {
+      display: flex;
+      flex-direction: row;
+    }
+    &__leftpane {
+      padding-left: 7rem;
+      border-right: $border;
+      width: 75%;
+    }
+  }
 }
