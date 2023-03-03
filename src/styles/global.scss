@@ -37,3 +37,26 @@ body {
     background-color: $button-hover;
   }
 }
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  width: auto;
+  color: white;
+  font-size: 12px;
+  background-color: black;
+  border-radius: $border-radius;
+  padding: 0.5rem;
+  top: 25px;
+  left: 0%;
+}
+.hover:hover .tooltip {
+  visibility: visible;
+}
+
+.hover {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}

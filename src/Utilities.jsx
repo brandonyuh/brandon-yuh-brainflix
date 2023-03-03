@@ -4,23 +4,34 @@ const convertDate = (timeStamp) => {
 };
 
 const relativeTime = (timeStamp) => {
-  let seconds = (new Date() - new Date(timeStamp)) / 1000;
+  const formatter = new Intl.RelativeTimeFormat("en-US", {
+    numeric: "auto",
+    style: "long",
+  });
+  const seconds = (new Date() - new Date(timeStamp)) / 1000;
 
-  let output = ``;
+  let number = 0;
+  let unit = "";
   if (seconds < 60) {
-    output = `${Math.floor(seconds)} seconds ago`;
+    number = Math.floor(seconds);
+    unit = "second";
   } else if (seconds < 3600) {
-    output = `${Math.floor(seconds / 60)} minutes ago`;
+    number = Math.floor(seconds / 60);
+    unit = "minute";
   } else if (seconds < 86400) {
-    output = `${Math.floor(seconds / 3600)} hours ago`;
+    number = Math.floor(seconds / 3600);
+    unit = "hour";
   } else if (seconds < 2620800) {
-    output = `${Math.floor(seconds / 86400)} days ago`;
+    number = Math.floor(seconds / 86400);
+    unit = "day";
   } else if (seconds < 31449600) {
-    output = `${Math.floor(seconds / 2620800)} months ago`;
+    number = Math.floor(seconds / 2620800);
+    unit = "month";
   } else {
-    output = `${Math.floor(seconds / 31449600)} years ago`;
+    number = Math.floor(seconds / 31449600);
+    unit = "year";
   }
-  return output;
+  return formatter.format(-number, unit);
 };
 
 export { convertDate, relativeTime };

@@ -14,8 +14,10 @@ function VideoDescription({ title, channel, timestamp, views, likes, description
           <span>{views}</span>
         </article>
         <div className="description__data description__time-container ">
-          <div className="description__time description__time--element">{convertDate(timestamp)}</div>
-          <div className="description__time description__time--element">{relativeTime(timestamp)}</div>
+          <div className="hover description__time description__time--element">
+            {relativeTime(timestamp)}
+            <div className="tooltip description__time description__time--element">{convertDate(timestamp)}</div>
+          </div>
         </div>
 
         <article className="description__data description__data-likes">

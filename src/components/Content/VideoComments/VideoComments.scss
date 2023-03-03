@@ -7,7 +7,7 @@
   &--number {
     font-weight: bold;
     font-size: 0.8rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 }
 .comment {
@@ -20,6 +20,7 @@
     font-weight: bold;
     text-transform: uppercase;
     font-size: 0.8rem;
+    margin-bottom: 0.5rem;
   }
   &__profile {
     margin: 0;
@@ -44,22 +45,45 @@
     background-image: url("../../../assets/images/add_comment.svg");
     background-repeat: no-repeat;
     background-position: 10px center;
+    background-size: 20px;
     width: 100%;
+    margin-top: 0.7rem;
   }
   &__data {
     width: 100%;
 
     &--name {
       font-weight: bold;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
     }
     &--date {
       color: $font-light;
+      margin-bottom: 0.5rem;
+    }
+    &--absolute {
+      visibility: hidden;
+      position: absolute;
+      z-index: 1;
+      color: white;
+      background-color: black;
+      border-radius: $border-radius;
+      padding: 0.5rem;
+      top: 25px;
+      left: -50%;
+    }
+    &--relative {
+      position: relative;
+      display: inline-block;
+      &:hover {
+        .comment__data--absolute {
+          visibility: visible;
+        }
+      }
     }
   }
   &__input {
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     font-weight: bold;
     background-color: $input-background;
   }
@@ -69,7 +93,7 @@
     justify-content: space-between;
   }
 
-  &__text{
+  &__text {
     font-size: 0.84rem;
   }
 }

@@ -8,12 +8,12 @@ function VideoComments({ comments }) {
       <p className="comments--number">{comments.length} Comments</p>
       <article className="comment">
         <div className="comment__profile">
-          <img className="comment__icon" src={ProfileIcon} alt="Profile Image" />
+          <img className="comment__icon" src={ProfileIcon} alt="Profile" />
         </div>
         <div className="comment__data comment__add">
           <div>
             <p className="comment__title">Join the conversation</p>
-            <textarea className="comment__input" name="" id="" cols="30" rows="4" placeholder="Add a new comment"></textarea>
+            <textarea className="comment__input" name="" id="" cols="30" rows="5" placeholder="Add a new comment"></textarea>
           </div>
           <button className="button comment__button">Comment</button>
         </div>
@@ -26,10 +26,12 @@ function VideoComments({ comments }) {
           <div className="comment__data">
             <div className="comment__heading">
               <p className="comment__data--name">{comment.name}</p>
-              <p className="comment__data--date">
-                <div>{convertDate(comment.timestamp)} </div>
-                <div>{relativeTime(comment.timestamp)}</div>
-              </p>
+              <div className="comment__data--date">
+                <div className="hover">
+                  {relativeTime(comment.timestamp)}
+                  <span className="tooltip">{convertDate(comment.timestamp)}</span>
+                </div>
+              </div>
             </div>
             <p className="comment__text">{comment.comment}</p>
           </div>
