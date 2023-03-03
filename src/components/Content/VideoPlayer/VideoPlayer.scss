@@ -11,9 +11,14 @@
     height: 11.2rem;
     max-height: 100vh;
   }
-  @include tablet{
+  @include tablet {
     &__player {
       height: 24rem;
+    }
+  }
+  @include desktop {
+    &__player {
+      height: 30rem;
     }
   }
 }
