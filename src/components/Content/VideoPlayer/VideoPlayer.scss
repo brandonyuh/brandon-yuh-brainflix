@@ -1,9 +1,19 @@
+@use "../../../styles/partials/variables" as *;
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/colors" as *;
+
 .video {
   background-color: black;
   display: flex;
   justify-content: center;
   &__player {
     width: 100%;
-    max-height: 11.2rem;
+    height: 11.2rem;
+    max-height: 100vh;
+  }
+  @include tablet{
+    &__player {
+      height: 24rem;
+    }
   }
 }
