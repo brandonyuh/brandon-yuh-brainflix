@@ -11,7 +11,7 @@ function VideoComments({ comments }) {
           <img className="comment__icon" src={ProfileIcon} alt="Profile" />
         </div>
         <div className="comment__form">
-          <label for="addcomment" className="comment__title">
+          <label htmlFor="addcomment" className="comment__title">
             Join the conversation
           </label>
           <div className="comment__data comment__add">
