@@ -27,6 +27,7 @@ function Content() {
 
   const handleChangeVideo = (id) => {
     setVideo(getVideoDetails(id));
+    window.scrollTo(0, 0);
   };
 
   return (
