@@ -1,5 +1,6 @@
 import "./VideoList.scss";
 function VideoList({ videos, id, handleChangeVideo }) {
+  if(videos.length === 0) return null;
   return (
     <div className="videolist">
       <h3 className="videolist__title">Next Videos</h3>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import "./Content.scss";
 import VideoPlayer from "./VideoPlayer/VideoPlayer";
 import VideoDescription from "./VideoDescription/VideoDescription";
@@ -17,8 +18,8 @@ function Content() {
 
   const getVideoDetails = async (id) => {
     try {
-      const response = await fetch(apiUrl + "videos/" + id + apiParams);
-      const videoDetails = await response.json();
+      const response = await axios.get(apiUrl + "videos/" + id + apiParams);
+      const videoDetails = response.data;
       setVideo(videoDetails);
     } catch (error) {
       console.log("get video error: ", error);
@@ -28,10 +29,9 @@ function Content() {
   const updateVideoList = async () => {
     if (videos.length === 0) {
       try {
-        const response = await fetch(apiUrl + "videos" + apiParams);
-        const videoData = await response.json();
-        setVideos(videoData);
-        getVideoDetails(videoData[0].id);
+        const response = await axios.get(apiUrl + "videos" + apiParams);
+        setVideos(response.data);
+        if (response.data.length > 0) getVideoDetails(response.data[0].id);
       } catch (error) {
         console.log("update videos error: ", error);
       }
