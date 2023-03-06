@@ -17,6 +17,7 @@ function Content() {
   const [videoId, setVideoId] = useState("84e96018-4022-434e-80bf-000ce4cd12b8");
   const [video, setVideo] = useState(currentVideoDetails);
 
+  // get videos from api
   useEffect(() => {
     axios.get(apiUrl + "videos" + apiParams).then((response) => {
       setVideos(response.data);
@@ -25,6 +26,7 @@ function Content() {
     return () => {};
   }, []);
 
+  // get video details from api, listen for videoId change
   useEffect(() => {
     axios.get(apiUrl + "videos/" + videoId + apiParams).then((response) => {
       setVideo(response.data);
@@ -32,6 +34,7 @@ function Content() {
     return () => {};
   }, [videoId]);
 
+  // handle click on video list item
   const handleChangeVideo = (id) => {
     setVideoId(id);
     window.scrollTo(0, 0);
