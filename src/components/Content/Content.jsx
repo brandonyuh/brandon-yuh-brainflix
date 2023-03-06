@@ -1,29 +1,44 @@
 import { useState } from "react";
 import "./Content.scss";
-import VideoData from "../../data/videos.json";
-import VideoDetails from "../../data/video-details.json";
 import VideoPlayer from "./VideoPlayer/VideoPlayer";
 import VideoDescription from "./VideoDescription/VideoDescription";
 import VideoComments from "./VideoComments/VideoComments";
 import VideoList from "./VideoList/VideoList";
 
-const getVideoDetails = (id) => {
-  //replace with API later!
-  const filteredVideos = VideoDetails.filter((video) => video.id === id);
-  return filteredVideos[0];
-};
-
-const getVideoList = () => {
-  //replace with API later!
-  return VideoData;
-};
+const apiUrl = "https://project-2-api.herokuapp.com/";
+const apiParams = "?api_key=3bd9fd1c-d227-4f83-9069-b439b85d08c1";
 
 function Content() {
-  const videoList = getVideoList();
-  const currentVideoDetails = getVideoDetails(videoList[0].id);
+  let videoList = [];
+  let currentVideoDetails = {};
 
   const [videos, setVideos] = useState(videoList);
   const [video, setVideo] = useState(currentVideoDetails);
+
+  const getVideoDetails = async (id) => {
+    try {
+      const response = await fetch(apiUrl + "videos/" + id + apiParams);
+      const videoDetails = await response.json();
+      setVideo(videoDetails);
+    } catch (error) {
+      console.log("get video error: ", error);
+    }
+  };
+
+  const updateVideoList = async () => {
+    if (videos.length === 0) {
+      try {
+        const response = await fetch(apiUrl + "videos" + apiParams);
+        const videoData = await response.json();
+        setVideos(videoData);
+        getVideoDetails(videoData[0].id);
+      } catch (error) {
+        console.log("update videos error: ", error);
+      }
+    }
+  };
+
+  updateVideoList();
 
   const handleChangeVideo = (id) => {
     setVideo(getVideoDetails(id));

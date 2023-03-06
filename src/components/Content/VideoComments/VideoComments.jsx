@@ -3,6 +3,7 @@ import ProfileIcon from "../../../assets/images/Mohan-muruge.jpg";
 import { convertDate, relativeTime } from "../../../Utilities";
 
 function VideoComments({ comments }) {
+  if(comments === undefined) comments = [];
   return (
     <section className="comments">
       <p className="comments--number">{comments.length} Comments</p>
