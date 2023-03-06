@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Content.scss";
 import VideoPlayer from "./VideoPlayer/VideoPlayer";
@@ -14,34 +14,26 @@ function Content() {
   let currentVideoDetails = {};
 
   const [videos, setVideos] = useState(videoList);
+  const [videoId, setVideoId] = useState("84e96018-4022-434e-80bf-000ce4cd12b8");
   const [video, setVideo] = useState(currentVideoDetails);
 
-  const getVideoDetails = async (id) => {
-    try {
-      const response = await axios.get(apiUrl + "videos/" + id + apiParams);
-      const videoDetails = response.data;
-      setVideo(videoDetails);
-    } catch (error) {
-      console.log("get video error: ", error);
-    }
-  };
+  useEffect(() => {
+    axios.get(apiUrl + "videos" + apiParams).then((response) => {
+      setVideos(response.data);
+      setVideoId(response.data[0].id);
+    });
+    return () => {};
+  }, []);
 
-  const updateVideoList = async () => {
-    if (videos.length === 0) {
-      try {
-        const response = await axios.get(apiUrl + "videos" + apiParams);
-        setVideos(response.data);
-        if (response.data.length > 0) getVideoDetails(response.data[0].id);
-      } catch (error) {
-        console.log("update videos error: ", error);
-      }
-    }
-  };
-
-  updateVideoList();
+  useEffect(() => {
+    axios.get(apiUrl + "videos/" + videoId + apiParams).then((response) => {
+      setVideo(response.data);
+    });
+    return () => {};
+  }, [videoId]);
 
   const handleChangeVideo = (id) => {
-    setVideo(getVideoDetails(id));
+    setVideoId(id);
     window.scrollTo(0, 0);
   };
 
