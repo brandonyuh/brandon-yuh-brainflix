@@ -4,6 +4,7 @@ const convertDate = (timeStamp) => {
 };
 
 const relativeTime = (timeStamp) => {
+  if(!timeStamp) return "";
   const formatter = new Intl.RelativeTimeFormat("en-US", {
     numeric: "auto",
     style: "long",

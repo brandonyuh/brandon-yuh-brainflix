@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import "./styles/global.scss";
 import Header from "./components/Header/Header";
@@ -8,7 +8,13 @@ function App() {
   return (
     <>
       <Header />
-      <Content />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Content />} />
+          <Route path="/:videoPageId" element={<Content />} />
+          <Route path="*" element={<Content />} />
+        </Routes>
+      </BrowserRouter>
     </>
     // <div className="App">
     //   <header className="App-header">

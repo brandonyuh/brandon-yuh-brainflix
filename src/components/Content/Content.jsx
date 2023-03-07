@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams, Navigate } from "react-router-dom";
 import axios from "axios";
 import "./Content.scss";
 import VideoPlayer from "./VideoPlayer/VideoPlayer";
@@ -10,27 +11,38 @@ const apiUrl = "https://project-2-api.herokuapp.com/";
 const apiParams = "?api_key=3bd9fd1c-d227-4f83-9069-b439b85d08c1";
 
 function Content() {
+  let { videoPageId } = useParams();
+  if (!videoPageId) {
+    //If we don't get params set it to the default BMX Rampage video
+    videoPageId = "84e96018-4022-434e-80bf-000ce4cd12b8";
+  }
   let videoList = [];
   let currentVideoDetails = {};
 
   const [videos, setVideos] = useState(videoList);
-  const [videoId, setVideoId] = useState("84e96018-4022-434e-80bf-000ce4cd12b8");
+  const [videoId, setVideoId] = useState(videoPageId);
   const [video, setVideo] = useState(currentVideoDetails);
 
   // get videos from api
   useEffect(() => {
     axios.get(apiUrl + "videos" + apiParams).then((response) => {
       setVideos(response.data);
-      setVideoId(response.data[0].id);
     });
     return () => {};
   }, []);
 
   // get video details from api, listen for videoId change
   useEffect(() => {
-    axios.get(apiUrl + "videos/" + videoId + apiParams).then((response) => {
-      setVideo(response.data);
-    });
+    axios
+      .get(apiUrl + "videos/" + videoId + apiParams)
+      .then((response) => {
+        setVideo(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        const noVideo = { title: "Video not found!", channel: "Nobody👻", views: "0", likes: "0", description: "This video does not exist." };
+        setVideo(noVideo);
+      });
     return () => {};
   }, [videoId]);
 
