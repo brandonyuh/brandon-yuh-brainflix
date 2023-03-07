@@ -86,4 +86,15 @@
       }
     }
   }
+  @include desktop {
+    padding-left: 8rem;
+    padding-right: 7rem;
+    &__container {
+      flex-direction: row;
+      column-gap: 1rem;
+    }
+    &__inputs{
+      width:100%;
+    }
+  }
 }
