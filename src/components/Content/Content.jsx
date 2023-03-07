@@ -12,10 +12,8 @@ const apiParams = "?api_key=3bd9fd1c-d227-4f83-9069-b439b85d08c1";
 
 function Content() {
   let { videoPageId } = useParams();
-  if (!videoPageId) {
-    //If we don't get params set it to the default BMX Rampage video
-    videoPageId = "84e96018-4022-434e-80bf-000ce4cd12b8";
-  }
+  let homePageVideo = {};
+
   let videoList = [];
   let currentVideoDetails = {};
 
@@ -27,22 +25,36 @@ function Content() {
   useEffect(() => {
     axios.get(apiUrl + "videos" + apiParams).then((response) => {
       setVideos(response.data);
+      if (videoPageId === undefined) {
+        homePageVideo = response.data[0];
+        setVideoId(homePageVideo.id);
+        setVideo(homePageVideo);
+      }
     });
     return () => {};
   }, []);
 
   // get video details from api, listen for videoId change
   useEffect(() => {
-    axios
-      .get(apiUrl + "videos/" + videoId + apiParams)
-      .then((response) => {
-        setVideo(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        const noVideo = { title: "Video not found!", channel: "Nobody👻", views: "0", likes: "0", description: "This video does not exist." };
-        setVideo(noVideo);
-      });
+    let id = videoId;
+    if (videoId === undefined) {
+      id = homePageVideo.id;
+    } else {
+      axios
+        .get(apiUrl + "videos/" + id + apiParams)
+        .then((response) => {
+          setVideo(response.data);
+        })
+        .catch(function (error) {
+          // handle error
+          if (videoPageId) {
+            const noVideo = { title: "Video not found!", channel: "Nobody👻", views: "0", likes: "0", description: "This video does not exist." };
+            setVideo(noVideo);
+          } else {
+            setVideo(homePageVideo);
+          }
+        });
+    }
     return () => {};
   }, [videoId]);
 
@@ -51,6 +63,17 @@ function Content() {
     setVideoId(id);
     window.scrollTo(0, 0);
   };
+
+  // set video to first video in list if no videoPageId in params is not set
+  useEffect(() => {
+    if (!videoPageId) {
+      if (videos.length > 0) {
+        setVideoId(videos[0].id);
+        setVideo(videos[0]);
+      }
+    }
+    return () => {};
+  }, [videoPageId]);
 
   return (
     <div className="content">
