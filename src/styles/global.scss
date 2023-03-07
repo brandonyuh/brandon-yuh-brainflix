@@ -41,6 +41,9 @@ body {
     cursor: pointer;
     background-color: $button-hover;
   }
+  &--text {
+    color: $button-text;
+  }
 }
 
 .tooltip {
@@ -64,4 +67,23 @@ body {
   position: relative;
   display: inline-block;
   text-align: center;
+}
+
+.label {
+  color: $font-light;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.textbox {
+  font-weight: bold;
+  background-color: $input-background;
+  border-radius: $border-radius;
+  padding: 0.7rem;
+  &::placeholder {
+    color: $font-dark;
+    opacity: 1;
+  }
 }

@@ -12,11 +12,11 @@ function VideoComments({ comments }) {
           <img className="comment__icon" src={ProfileIcon} alt="Profile" />
         </div>
         <div className="comment__form">
-          <label htmlFor="addcomment" className="comment__title">
+          <label htmlFor="addcomment" className="label comment__title">
             Join the conversation
           </label>
           <div className="comment__data comment__add">
-            <textarea className="comment__input" name="addcomment" id="addcomment" cols="30" rows="5" placeholder="Add a new comment"></textarea>
+            <textarea className="textbox comment__input" name="addcomment" id="addcomment" cols="30" rows="5" placeholder="Add a new comment"></textarea>
             <button className="button comment__button">Comment</button>
           </div>
         </div>

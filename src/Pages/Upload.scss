@@ -1,0 +1,63 @@
+@use "../styles/partials/colors" as *;
+@use "../styles/partials/variables" as *;
+@use "../styles/partials/mixins" as *;
+
+.upload {
+  background-color: $background;
+  padding: 1rem $padding-default;
+  margin-top: -0.5rem;
+  border-top: $border;
+  &__preview {
+    &--image {
+      width: 100%;
+      border-radius: $border-radius;
+    }
+  }
+  &__title {
+    padding-top: 0.2rem;
+    padding-bottom: 1.5rem;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__label{
+    padding-top: 1rem;
+    padding-bottom: 0.2rem;
+    margin-bottom: 0rem;
+
+  }
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    &--publish {
+      margin-top: 1.5rem;
+      width: 100%;
+      background-image: url("../assets/images/upload.svg");
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      background-size: 20px;
+      margin-bottom: 0.3rem;
+    }
+
+    &--cancel {
+      padding: 1.5rem;
+      text-align: center;
+      color: $button-color;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 0.8rem;
+      &:hover {
+        cursor: pointer;
+        color: $button-hover;
+      }
+    }
+  }
+}
