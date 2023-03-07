@@ -81,6 +81,7 @@ body {
   font-weight: bold;
   background-color: $input-background;
   border-radius: $border-radius;
+  border: $input-border;
   padding: 0.7rem;
   &::placeholder {
     color: $font-dark;

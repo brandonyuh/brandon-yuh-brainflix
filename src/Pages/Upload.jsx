@@ -19,7 +19,7 @@ function Upload() {
           <label className="label upload__label">Title your video</label>
           <input className="textbox upload__input" type="text" placeholder="Add a title to your video" />
           <label className="label upload__label">Add a video description</label>
-          <textarea className="textbox upload__input" rows="4" placeholder="Add a description to your video" />
+          <textarea className="textbox upload__input upload__input--description" rows="4" placeholder="Add a description to your video" />
         </div>
       </article>
       <article className="upload__buttons">
