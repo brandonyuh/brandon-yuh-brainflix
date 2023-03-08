@@ -60,6 +60,8 @@
     &--date {
       color: $font-light;
       margin-bottom: 0.5rem;
+      display: flex;
+      flex-direction: column;
     }
     &--absolute {
       visibility: hidden;

@@ -6,9 +6,7 @@ import VideoPlayer from "./VideoPlayer/VideoPlayer";
 import VideoDescription from "./VideoDescription/VideoDescription";
 import VideoComments from "./VideoComments/VideoComments";
 import VideoList from "./VideoList/VideoList";
-
-const apiUrl = "https://project-2-api.herokuapp.com/";
-const apiParams = "?api_key=3bd9fd1c-d227-4f83-9069-b439b85d08c1";
+import { apiUrl, apiParams } from "../../Api";
 
 function Content() {
   let { videoPageId } = useParams();
@@ -79,7 +77,7 @@ function Content() {
       <div className="content__belowvideo">
         <div className="content__leftpane">
           <VideoDescription title={video.title} channel={video.channel} timestamp={video.timestamp} views={video.views} likes={video.likes} description={video.description} />
-          <VideoComments comments={video.comments} />
+          <VideoComments comments={video.comments} id={video.id} />
         </div>
         <VideoList id={video.id} videos={videos} handleChangeVideo={handleChangeVideo} />
       </div>

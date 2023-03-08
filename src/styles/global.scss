@@ -88,3 +88,22 @@ body {
     opacity: 1;
   }
 }
+
+.invalid {
+  border-color: $error-color;
+  animation: shakeItUp 0.25s;
+}
+
+@keyframes shakeItUp {
+  0% {
+    transform: translateX(-20px);
+  }
+
+  50% {
+    transform: translateX(20px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
