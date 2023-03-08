@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Upload.scss";
 import UploadImage from "../assets/images/Upload-video-preview.jpg";
 
 function Upload() {
+  const navigate = useNavigate();
   const alertThankUpload = () => {
     alert("Thank you for uploading your video!");
+    //navigates to home page
+    navigate("/");
   };
 
   return (
@@ -23,11 +26,9 @@ function Upload() {
         </div>
       </article>
       <article className="upload__buttons">
-        <Link to="/">
-          <button className="button upload__buttons--publish" onClick={alertThankUpload}>
-            Publish
-          </button>
-        </Link>
+        <button className="button upload__buttons--publish" onClick={alertThankUpload}>
+          Publish
+        </button>
         <Link to="/" className="upload__buttons--cancel">
           Cancel
         </Link>
