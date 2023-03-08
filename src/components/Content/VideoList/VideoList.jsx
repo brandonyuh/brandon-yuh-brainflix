@@ -3,7 +3,7 @@ import "./VideoList.scss";
 function VideoList({ videos, id, handleChangeVideo }) {
   // array of numbers to use as keys for placeholder videos
   const emptyVideoList = [1, 2, 3, 4, 5, 6, 7, 8];
-  if (videos.length != 0) {
+  if (videos.length !== 0) {
     return (
       <div className="videolist">
         <h3 className="videolist__title">Next Videos</h3>

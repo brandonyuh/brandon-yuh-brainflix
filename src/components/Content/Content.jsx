@@ -25,11 +25,7 @@ function Content() {
   useEffect(() => {
     axios.get(apiUrl + "videos" + apiParams).then((response) => {
       setVideos(response.data);
-      if (videoPageId === undefined) {
-        homePageVideo = response.data[0];
-        setVideoId(homePageVideo.id);
-        setVideo(homePageVideo);
-      }
+      setVideoId(response.data[0]);
     });
     return () => {};
   }, []);
@@ -37,7 +33,9 @@ function Content() {
   // get video details from api, listen for videoId change
   useEffect(() => {
     let id = videoId;
-    if (videoId === undefined) {
+    if (typeof videoId === "object") {
+      id = videoId.id;
+    } else if (videoId === undefined) {
       id = homePageVideo.id;
     } else {
       axios
@@ -73,7 +71,7 @@ function Content() {
       }
     }
     return () => {};
-  }, [videoPageId]);
+  }, [videoPageId, videos]);
 
   return (
     <div className="content">
