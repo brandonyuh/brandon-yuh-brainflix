@@ -28,6 +28,10 @@ body {
   background: $background;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .button {
   border: 0;
   text-align: center;
