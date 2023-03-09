@@ -40,10 +40,10 @@ function Content() {
           if (videoPageId) {
             const noVideo = { title: "Video not found!", channel: "Nobody👻", views: "0", likes: "0", description: "This video does not exist." };
             setVideo(noVideo);
-          } 
+          }
         });
     },
-    [ videoPageId]
+    [videoPageId]
   );
 
   // get video details from api, listen for videoId change
@@ -55,7 +55,7 @@ function Content() {
       getVideo(id);
     }
     return () => {};
-  }, [videoId, getVideo]); 
+  }, [videoId, getVideo]);
 
   // handle click on video list item
   const handleChangeVideo = (id) => {
