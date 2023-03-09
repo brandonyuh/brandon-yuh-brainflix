@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../../components/Header/Header";
@@ -29,7 +29,7 @@ function Content() {
     return () => {};
   }, []);
 
-  function getVideo(id) {
+  const getVideo = useCallback((id) => {
     axios
       .get(apiUrl + "videos/" + id + apiParams)
       .then((response) => {
@@ -44,7 +44,7 @@ function Content() {
           setVideo(homePageVideo);
         }
       });
-  }
+  }, []);
 
   // get video details from api, listen for videoId change
   useEffect(() => {
