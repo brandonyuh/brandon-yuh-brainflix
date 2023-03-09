@@ -91,6 +91,7 @@ body {
   border: $input-border;
   padding: 0.7rem;
   resize: none;
+  font-family: "AvenirNext LT Pro", Arial, Helvetica, sans-serif;
   &::placeholder {
     color: $font-dark;
     opacity: 1;
