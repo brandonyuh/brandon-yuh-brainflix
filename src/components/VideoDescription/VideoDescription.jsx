@@ -1,7 +1,7 @@
 import "./VideoDescription.scss";
-import { convertDate, relativeTime } from "../../../Utilities";
-import viewsImage from "../../../assets/images/views.svg";
-import likesImage from "../../../assets/images/likes.svg";
+import { convertDate, relativeTime } from "../../Utilities";
+import viewsImage from "../../assets/images/views.svg";
+import likesImage from "../../assets/images/likes.svg";
 
 function VideoDescription({ title, channel, timestamp, views, likes, description }) {
   if (title === undefined) return null;

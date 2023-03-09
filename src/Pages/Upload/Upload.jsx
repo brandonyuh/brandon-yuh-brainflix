@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Upload.scss";
-import Header from "../components/Header/Header";
-import UploadImage from "../assets/images/Upload-video-preview.jpg";
+import Header from "../../components/Header/Header";
+import UploadImage from "../../assets/images/Upload-video-preview.jpg";
 
 function Upload() {
   const navigate = useNavigate();

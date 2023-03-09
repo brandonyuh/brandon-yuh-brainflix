@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Header from "../Header/Header";
+import Header from "../../components/Header/Header";
 import "./Content.scss";
-import VideoPlayer from "./VideoPlayer/VideoPlayer";
-import VideoDescription from "./VideoDescription/VideoDescription";
-import VideoComments from "./VideoComments/VideoComments";
-import VideoList from "./VideoList/VideoList";
+import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
+import VideoDescription from "../../components/VideoDescription/VideoDescription";
+import VideoComments from "../../components/VideoComments/VideoComments";
+import VideoList from "../../components/VideoList/VideoList";
 import { apiUrl, apiParams } from "../../Api";
 
 function Content() {
@@ -80,19 +80,20 @@ function Content() {
     return () => {};
   }, [videoPageId, videos]);
 
-  return (<>
-  <Header/>
-    <div className="content">
-      <VideoPlayer image={video.image} />
-      <div className="content__belowvideo">
-        <div className="content__leftpane">
-          <VideoDescription title={video.title} channel={video.channel} timestamp={video.timestamp} views={video.views} likes={video.likes} description={video.description} />
-          <VideoComments comments={video.comments} id={video.id} refreshVideo={refreshVideo} getVideo={getVideo} />
+  return (
+    <>
+      <Header />
+      <div className="content">
+        <VideoPlayer image={video.image} />
+        <div className="content__belowvideo">
+          <div className="content__leftpane">
+            <VideoDescription title={video.title} channel={video.channel} timestamp={video.timestamp} views={video.views} likes={video.likes} description={video.description} />
+            <VideoComments comments={video.comments} id={video.id} refreshVideo={refreshVideo} getVideo={getVideo} />
+          </div>
+          <VideoList id={video.id} videos={videos} handleChangeVideo={handleChangeVideo} />
         </div>
-        <VideoList id={video.id} videos={videos} handleChangeVideo={handleChangeVideo} />
       </div>
-    </div>
-  </>
+    </>
   );
 }
 

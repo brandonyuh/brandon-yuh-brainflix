@@ -1,6 +1,6 @@
-@use "../styles/partials/colors" as *;
-@use "../styles/partials/variables" as *;
-@use "../styles/partials/mixins" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .upload {
   background-color: $background;
@@ -43,7 +43,7 @@
     width: 100%;
     &--publish {
       width: 100%;
-      background-image: url("../assets/images/upload.svg");
+      background-image: url("../../assets/images/upload.svg");
       background-repeat: no-repeat;
       background-position: 10px center;
       background-size: 20px;

@@ -1,9 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import "./styles/global.scss";
-import Header from "./components/Header/Header";
-import Content from "./components/Content/Content";
-import Upload from "./Pages/Upload";
+import Content from "./Pages/Content/Content";
+import Upload from "./Pages/Upload/Upload";
 
 function App() {
   return (

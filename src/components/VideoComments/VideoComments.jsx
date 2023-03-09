@@ -1,9 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import "./VideoComments.scss";
-import ProfileIcon from "../../../assets/images/Mohan-muruge.jpg";
-import { convertDate, relativeTime } from "../../../Utilities";
-import { apiUrl, apiParams } from "../../../Api";
+import ProfileIcon from "../../assets/images/Mohan-muruge.jpg";
+import { convertDate, relativeTime } from "../../Utilities";
+import { apiUrl, apiParams } from "../../Api";
 
 function VideoComments({ comments, id, refreshVideo, getVideo }) {
   const [newComment, setNewComment] = useState("");
