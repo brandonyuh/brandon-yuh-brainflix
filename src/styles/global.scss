@@ -90,6 +90,7 @@ body {
   border-radius: $border-radius;
   border: $input-border;
   padding: 0.7rem;
+  resize: none;
   &::placeholder {
     color: $font-dark;
     opacity: 1;
