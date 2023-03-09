@@ -11,7 +11,6 @@ import { apiUrl, apiParams } from "../../Api";
 
 function Content() {
   let { videoPageId } = useParams();
-  //let homePageVideo = [];//useMemo(() => [], []);
 
   let videoList = [];
   let currentVideoDetails = {};
