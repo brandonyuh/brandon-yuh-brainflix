@@ -1,9 +1,11 @@
 import "./VideoPlayer.scss";
-function VideoPlayer({ image }) {
+import { apiParams } from "../../Api";
+function VideoPlayer({ image, video }) {
   return (
     <>
       <div className="video">
-        <video className="video__player" controls poster={image}></video>
+        <video className="video__player" controls poster={image} src={`${video}${apiParams}`}>
+        </video>
       </div>
     </>
   );
