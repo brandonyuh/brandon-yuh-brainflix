@@ -9,7 +9,6 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
         <Routes>
           <Route path="/" element={<Content />} />
           <Route path="/:videoPageId" element={<Content />} />

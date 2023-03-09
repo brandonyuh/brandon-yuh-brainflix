@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Header from "../Header/Header";
 import "./Content.scss";
 import VideoPlayer from "./VideoPlayer/VideoPlayer";
 import VideoDescription from "./VideoDescription/VideoDescription";
@@ -79,7 +80,8 @@ function Content() {
     return () => {};
   }, [videoPageId, videos]);
 
-  return (
+  return (<>
+  <Header/>
     <div className="content">
       <VideoPlayer image={video.image} />
       <div className="content__belowvideo">
@@ -90,6 +92,7 @@ function Content() {
         <VideoList id={video.id} videos={videos} handleChangeVideo={handleChangeVideo} />
       </div>
     </div>
+  </>
   );
 }
 
