@@ -28,13 +28,17 @@
       color: black;
     }
     &--image {
-      margin-right: 0.5em;
+      margin-right: 0.5rem;
     }
     &-likes {
       display: flex;
     }
     &-views {
       display: flex;
+    }
+    &--likesimage{
+      margin-left: 0.15rem;
+      margin-right: 0.66rem;
     }
   }
 

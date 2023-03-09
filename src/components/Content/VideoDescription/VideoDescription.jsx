@@ -22,7 +22,7 @@ function VideoDescription({ title, channel, timestamp, views, likes, description
           </div>
 
           <article className="description__data description__data-likes">
-            <img className="description__data--image" src={likesImage} alt="" />
+            <img className="description__data--image description__data--likesimage" src={likesImage} alt="" />
             <p>{likes}</p>
           </article>
         </div>
