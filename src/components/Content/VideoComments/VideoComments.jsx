@@ -57,9 +57,9 @@ function VideoComments({ comments, id, refreshVideo, getVideo }) {
 
   if (comments === undefined) return null;
   return (
-    <section className="comments">
+    <ul className="comments">
       <p className="comments--number">{comments.length} Comments</p>
-      <article className="comment">
+      <li className="comment">
         <div className="comment__profile">
           <img className="comment__icon" src={ProfileIcon} alt="Profile" />
         </div>
@@ -74,11 +74,11 @@ function VideoComments({ comments, id, refreshVideo, getVideo }) {
             </button>
           </div>
         </form>
-      </article>
+      </li>
       {comments
         .sort((a, b) => b.timestamp - a.timestamp)
         .map((comment) => (
-          <article key={comment.id} className="comment">
+          <li key={comment.id} className="comment">
             <div className="comment__profile">
               <div className="comment__icon comment__anon"></div>
             </div>
@@ -97,9 +97,9 @@ function VideoComments({ comments, id, refreshVideo, getVideo }) {
                 DELETE
               </button>
             </div>
-          </article>
+          </li>
         ))}
-    </section>
+    </ul>
   );
 }
 
