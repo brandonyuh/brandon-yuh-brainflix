@@ -15,12 +15,9 @@ function Header() {
       <div className="header__profile">
         <img className="header__icon" src={ProfileIcon} alt="BrainFlix Logo" />
       </div>
-
-      <button className="button header__upload">
-        <Link to="/upload" className="button--text">
-          Upload
-        </Link>
-      </button>
+      <Link to="/upload" className="button header__upload button--text">
+        Upload
+      </Link>
     </header>
   );
 }
