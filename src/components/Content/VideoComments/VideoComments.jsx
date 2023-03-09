@@ -34,9 +34,7 @@ function VideoComments({ comments, id, refreshVideo, getVideo }) {
     axios
       .post(`${apiUrl}videos/${id}/comments${apiParams}`, newCommentObj)
       .then((response) => {
-        // refreshVideo();
         getVideo(id);
-
         setNewComment("");
       })
       .catch((error) => {
@@ -46,13 +44,10 @@ function VideoComments({ comments, id, refreshVideo, getVideo }) {
   };
 
   const deleteComment = (commentId) => {
-    //DELETE /videos/:videoId/comments/:commentId
     axios
       .delete(`${apiUrl}videos/${id}/comments/${commentId}${apiParams}`)
       .then((response) => {
         getVideo(id);
-
-        // refreshVideo();
       })
       .catch((error) => {
         console.log(error);
