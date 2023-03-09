@@ -29,22 +29,25 @@ function Content() {
     return () => {};
   }, []);
 
-  const getVideo = useCallback((id) => {
-    axios
-      .get(apiUrl + "videos/" + id + apiParams)
-      .then((response) => {
-        setVideo(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        if (videoPageId) {
-          const noVideo = { title: "Video not found!", channel: "Nobody👻", views: "0", likes: "0", description: "This video does not exist." };
-          setVideo(noVideo);
-        } else {
-          setVideo(homePageVideo);
-        }
-      });
-  }, []);
+  const getVideo = useCallback(
+    (id) => {
+      axios
+        .get(apiUrl + "videos/" + id + apiParams)
+        .then((response) => {
+          setVideo(response.data);
+        })
+        .catch(function (error) {
+          // handle error
+          if (videoPageId) {
+            const noVideo = { title: "Video not found!", channel: "Nobody👻", views: "0", likes: "0", description: "This video does not exist." };
+            setVideo(noVideo);
+          } else {
+            setVideo(homePageVideo);
+          }
+        });
+    },
+    [homePageVideo, videoPageId]
+  );
 
   // get video details from api, listen for videoId change
   useEffect(() => {
