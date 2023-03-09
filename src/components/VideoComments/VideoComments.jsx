@@ -5,7 +5,7 @@ import ProfileIcon from "../../assets/images/Mohan-muruge.jpg";
 import { convertDate, relativeTime } from "../../Utilities";
 import { apiUrl, apiParams } from "../../Api";
 
-function VideoComments({ comments, id, refreshVideo, getVideo }) {
+function VideoComments({ comments, id, getVideo }) {
   const [newComment, setNewComment] = useState("");
   const [isCommentEmpty, setIsCommentEmpty] = useState(false);
 

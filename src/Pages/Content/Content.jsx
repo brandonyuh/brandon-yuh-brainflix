@@ -29,18 +29,6 @@ function Content() {
     return () => {};
   }, []);
 
-  const refreshVideo = () => {
-    let id = videoId;
-    if (typeof videoId === "object") {
-      id = videoId.id;
-    } else if (videoId === undefined) {
-      id = homePageVideo.id;
-    } else {
-      getVideo(id);
-    }
-    return () => {};
-  };
-
   function getVideo(id) {
     axios
       .get(apiUrl + "videos/" + id + apiParams)
@@ -60,8 +48,16 @@ function Content() {
 
   // get video details from api, listen for videoId change
   useEffect(() => {
-    refreshVideo();
-  }, [videoId, refreshVideo]); // eslint-disable-line react-hooks/exhaustive-deps
+    let id = videoId;
+    if (typeof videoId === "object") {
+      id = videoId.id;
+    } else if (videoId === undefined) {
+      id = homePageVideo.id;
+    } else {
+      getVideo(id);
+    }
+    return () => {};
+  }, [videoId, getVideo, homePageVideo.id]); // eslint-disable-line no-return-assign, no-param-reassign
 
   // handle click on video list item
   const handleChangeVideo = (id) => {
@@ -84,11 +80,11 @@ function Content() {
     <>
       <Header />
       <div className="content">
-        <VideoPlayer image={video.image} video={video.video}/>
+        <VideoPlayer image={video.image} video={video.video} />
         <div className="content__belowvideo">
           <div className="content__leftpane">
             <VideoDescription title={video.title} channel={video.channel} timestamp={video.timestamp} views={video.views} likes={video.likes} description={video.description} />
-            <VideoComments comments={video.comments} id={video.id} refreshVideo={refreshVideo} getVideo={getVideo} />
+            <VideoComments comments={video.comments} id={video.id} getVideo={getVideo} />
           </div>
           <VideoList id={video.id} videos={videos} handleChangeVideo={handleChangeVideo} />
         </div>
