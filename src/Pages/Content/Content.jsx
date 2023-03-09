@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../../components/Header/Header";
@@ -11,7 +11,7 @@ import { apiUrl, apiParams } from "../../Api";
 
 function Content() {
   let { videoPageId } = useParams();
-  let homePageVideo = {};
+  let homePageVideo = useMemo(() => [], []);
 
   let videoList = [];
   let currentVideoDetails = {};
