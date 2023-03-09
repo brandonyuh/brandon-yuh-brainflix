@@ -94,7 +94,7 @@ function VideoComments({ comments, id, refreshVideo, getVideo }) {
               </div>
               <p className="comment__text">{comment.comment}</p>
               <button className="button button__delete" onClick={() => deleteComment(comment.id)}>
-                DELETE
+                Delete
               </button>
             </div>
           </li>
