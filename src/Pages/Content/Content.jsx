@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../../components/Header/Header";
@@ -11,7 +11,7 @@ import { apiUrl, apiParams } from "../../Api";
 
 function Content() {
   let { videoPageId } = useParams();
-  let homePageVideo = useMemo(() => [], []);
+  //let homePageVideo = [];//useMemo(() => [], []);
 
   let videoList = [];
   let currentVideoDetails = {};
@@ -41,12 +41,10 @@ function Content() {
           if (videoPageId) {
             const noVideo = { title: "Video not found!", channel: "Nobody👻", views: "0", likes: "0", description: "This video does not exist." };
             setVideo(noVideo);
-          } else {
-            setVideo(homePageVideo);
-          }
+          } 
         });
     },
-    [homePageVideo, videoPageId]
+    [ videoPageId]
   );
 
   // get video details from api, listen for videoId change
@@ -54,13 +52,11 @@ function Content() {
     let id = videoId;
     if (typeof videoId === "object") {
       id = videoId.id;
-    } else if (videoId === undefined) {
-      id = homePageVideo.id;
     } else {
       getVideo(id);
     }
     return () => {};
-  }, [videoId, getVideo, homePageVideo.id]); // eslint-disable-line no-return-assign, no-param-reassign
+  }, [videoId, getVideo]); 
 
   // handle click on video list item
   const handleChangeVideo = (id) => {
