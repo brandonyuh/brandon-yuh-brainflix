@@ -61,7 +61,7 @@ function Content() {
   // get video details from api, listen for videoId change
   useEffect(() => {
     refreshVideo();
-  }, [videoId, refreshVideo]);
+  }, [videoId, refreshVideo]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // handle click on video list item
   const handleChangeVideo = (id) => {
