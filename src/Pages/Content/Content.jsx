@@ -29,11 +29,6 @@ function Content() {
     return () => {};
   }, []);
 
-  // get video details from api, listen for videoId change
-  useEffect(() => {
-    refreshVideo();
-  }, [videoId]);
-
   const refreshVideo = () => {
     let id = videoId;
     if (typeof videoId === "object") {
@@ -62,6 +57,11 @@ function Content() {
         }
       });
   }
+
+  // get video details from api, listen for videoId change
+  useEffect(() => {
+    refreshVideo();
+  }, [videoId, refreshVideo]);
 
   // handle click on video list item
   const handleChangeVideo = (id) => {
