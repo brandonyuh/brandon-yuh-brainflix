@@ -44,6 +44,13 @@ body {
   &--text {
     color: $button-text;
   }
+  &__delete {
+    padding: 0.5rem;
+    &:hover {
+      cursor: pointer;
+      background-color: $error-color;
+    }
+  }
 }
 
 .tooltip {

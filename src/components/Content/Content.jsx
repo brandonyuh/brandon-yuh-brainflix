@@ -30,29 +30,37 @@ function Content() {
 
   // get video details from api, listen for videoId change
   useEffect(() => {
+    refreshVideo();
+  }, [videoId]);
+
+  const refreshVideo = () => {
     let id = videoId;
     if (typeof videoId === "object") {
       id = videoId.id;
     } else if (videoId === undefined) {
       id = homePageVideo.id;
     } else {
-      axios
-        .get(apiUrl + "videos/" + id + apiParams)
-        .then((response) => {
-          setVideo(response.data);
-        })
-        .catch(function (error) {
-          // handle error
-          if (videoPageId) {
-            const noVideo = { title: "Video not found!", channel: "Nobody👻", views: "0", likes: "0", description: "This video does not exist." };
-            setVideo(noVideo);
-          } else {
-            setVideo(homePageVideo);
-          }
-        });
+      getVideo(id);
     }
     return () => {};
-  }, [videoId]);
+  };
+
+  function getVideo(id) {
+    axios
+      .get(apiUrl + "videos/" + id + apiParams)
+      .then((response) => {
+        setVideo(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        if (videoPageId) {
+          const noVideo = { title: "Video not found!", channel: "Nobody👻", views: "0", likes: "0", description: "This video does not exist." };
+          setVideo(noVideo);
+        } else {
+          setVideo(homePageVideo);
+        }
+      });
+  }
 
   // handle click on video list item
   const handleChangeVideo = (id) => {
@@ -77,7 +85,7 @@ function Content() {
       <div className="content__belowvideo">
         <div className="content__leftpane">
           <VideoDescription title={video.title} channel={video.channel} timestamp={video.timestamp} views={video.views} likes={video.likes} description={video.description} />
-          <VideoComments comments={video.comments} id={video.id} />
+          <VideoComments comments={video.comments} id={video.id} refreshVideo={refreshVideo} getVideo={getVideo} />
         </div>
         <VideoList id={video.id} videos={videos} handleChangeVideo={handleChangeVideo} />
       </div>

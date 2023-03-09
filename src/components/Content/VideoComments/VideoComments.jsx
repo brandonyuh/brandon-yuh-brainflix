@@ -5,7 +5,7 @@ import ProfileIcon from "../../../assets/images/Mohan-muruge.jpg";
 import { convertDate, relativeTime } from "../../../Utilities";
 import { apiUrl, apiParams } from "../../../Api";
 
-function VideoComments({ comments, id }) {
+function VideoComments({ comments, id, refreshVideo, getVideo }) {
   const [newComment, setNewComment] = useState("");
   const [isCommentEmpty, setIsCommentEmpty] = useState(false);
 
@@ -34,9 +34,9 @@ function VideoComments({ comments, id }) {
     axios
       .post(`${apiUrl}videos/${id}/comments${apiParams}`, newCommentObj)
       .then((response) => {
-        newCommentObj.id = response.data.id;
-        newCommentObj.timestamp = response.data.timestamp;
-        comments.unshift(newCommentObj);
+        // refreshVideo();
+        getVideo(id);
+
         setNewComment("");
       })
       .catch((error) => {
@@ -44,6 +44,22 @@ function VideoComments({ comments, id }) {
         alert("Sorry, your comment could not be posted. Please try again later.");
       });
   };
+
+  const deleteComment = (commentId) => {
+    //DELETE /videos/:videoId/comments/:commentId
+    axios
+      .delete(`${apiUrl}videos/${id}/comments/${commentId}${apiParams}`)
+      .then((response) => {
+        getVideo(id);
+
+        // refreshVideo();
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Sorry, your comment could not be deleted. Please try again later.");
+      });
+  };
+
   if (comments === undefined) return null;
   return (
     <section className="comments">
@@ -82,7 +98,9 @@ function VideoComments({ comments, id }) {
                 </div>
               </div>
               <p className="comment__text">{comment.comment}</p>
-              <button className="button button__delete">DELETE</button>
+              <button className="button button__delete" onClick={() => deleteComment(comment.id)}>
+                DELETE
+              </button>
             </div>
           </article>
         ))}
