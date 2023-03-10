@@ -58,7 +58,9 @@ function VideoComments({ comments, id, getVideo }) {
   if (comments === undefined) return null;
   return (
     <ul className="comments">
-      <p className="comments--number">{comments.length} Comments</p>
+      <p className="comments--number">
+        {comments.length} Comment{comments.length !== 1 ? `s` : ``}
+      </p>
       <li className="comment">
         <div className="comment__profile">
           <img className="comment__icon" src={ProfileIcon} alt="Profile" />
