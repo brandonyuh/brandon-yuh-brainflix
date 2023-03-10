@@ -5,7 +5,9 @@ import UploadImage from "../../assets/images/Upload-video-preview.jpg";
 
 function Upload() {
   const navigate = useNavigate();
-  const alertThankUpload = () => {
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
     alert("Thank you for uploading your video!");
     //navigates to home page
     navigate("/");
@@ -14,7 +16,7 @@ function Upload() {
   return (
     <>
       <Header />
-      <form className="upload">
+      <form onSubmit={handleSubmit} className="upload">
         <h1 className="upload__title">Upload Video</h1>
         <section className="upload__container">
           <div className="upload__preview--container">
@@ -29,7 +31,7 @@ function Upload() {
           </div>
         </section>
         <section className="upload__buttons">
-          <button className="button upload__buttons--publish" onClick={alertThankUpload}>
+          <button type="submit" className="button upload__buttons--publish">
             Publish
           </button>
           <Link to="/" className="upload__buttons--cancel">
