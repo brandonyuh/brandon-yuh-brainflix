@@ -39,7 +39,8 @@ const relativeTime = (timeStamp) => {
 
 const formatNumber = (number) => {
   if(!number) return 0;
-  return new Intl.NumberFormat(locale).format(number);
+  const returnNumber = number.toString().split(",").join("");
+  return new Intl.NumberFormat(locale).format(returnNumber);
 }
 
 export { convertDate, relativeTime, formatNumber};
