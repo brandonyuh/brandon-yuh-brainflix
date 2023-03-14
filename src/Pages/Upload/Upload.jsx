@@ -4,7 +4,6 @@ import axios from "axios";
 
 import "./Upload.scss";
 import Header from "../../components/Header/Header";
-import UploadImage from "../../assets/images/Upload-video-preview.jpg";
 import DefaultImage from "../../assets/images/default.jpg";
 import { apiUrl, apiParams } from "../../Api";
 
