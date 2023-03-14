@@ -30,6 +30,9 @@ function Content() {
 
   const getVideo = useCallback(
     (id) => {
+      if(id === undefined){
+        return;
+      }
       axios
         .get(apiUrl + "videos/" + id + apiParams)
         .then((response) => {
