@@ -84,7 +84,7 @@ function Content() {
         <VideoPlayer image={video.image} video={video.video} />
         <div className="content__belowvideo">
           <div className="content__leftpane">
-            <VideoDescription title={video.title} channel={video.channel} timestamp={video.timestamp} views={video.views} likes={video.likes} description={video.description} />
+            <VideoDescription id={video.id} title={video.title} channel={video.channel} timestamp={video.timestamp} views={video.views} likes={video.likes} description={video.description} getVideo={getVideo} />
             <VideoComments comments={video.comments} id={video.id} getVideo={getVideo} />
           </div>
           <VideoList id={video.id} videos={videos} handleChangeVideo={handleChangeVideo} />
