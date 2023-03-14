@@ -39,6 +39,9 @@
     &--likesimage{
       margin-left: 0.15rem;
       margin-right: 0.66rem;
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
 
