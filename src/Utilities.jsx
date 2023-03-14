@@ -1,3 +1,5 @@
+const locale = "en-US";
+
 const convertDate = (timeStamp) => {
   let newDate = new Date(timeStamp);
   return newDate.toLocaleDateString();
@@ -5,7 +7,7 @@ const convertDate = (timeStamp) => {
 
 const relativeTime = (timeStamp) => {
   if(!timeStamp) return "";
-  const formatter = new Intl.RelativeTimeFormat("en-US", {
+  const formatter = new Intl.RelativeTimeFormat(locale, {
     numeric: "auto",
     style: "long",
   });
@@ -35,4 +37,9 @@ const relativeTime = (timeStamp) => {
   return formatter.format(-number, unit);
 };
 
-export { convertDate, relativeTime };
+const formatNumber = (number) => {
+  if(!number) return 0;
+  return new Intl.NumberFormat(locale).format(number);
+}
+
+export { convertDate, relativeTime, formatNumber};

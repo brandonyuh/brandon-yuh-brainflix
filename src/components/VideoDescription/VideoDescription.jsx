@@ -1,5 +1,5 @@
 import "./VideoDescription.scss";
-import { convertDate, relativeTime } from "../../Utilities";
+import { convertDate, relativeTime, formatNumber } from "../../Utilities";
 import viewsImage from "../../assets/images/views.svg";
 import likesImage from "../../assets/images/likes.svg";
 
@@ -12,7 +12,7 @@ function VideoDescription({ title, channel, timestamp, views, likes, description
           <article className="description__data description__data--channel">By {channel}</article>
           <article className="description__data description__data-views">
             <img className="description__data--image" src={viewsImage} alt="" />
-            <span>{views}</span>
+            <span>{formatNumber(views)}</span>
           </article>
           <div className="description__data description__data--time ">
             <div className="hover description__time description__time--element">
@@ -23,7 +23,7 @@ function VideoDescription({ title, channel, timestamp, views, likes, description
 
           <article className="description__data description__data-likes">
             <img className="description__data--image description__data--likesimage" src={likesImage} alt="" />
-            <p>{likes}</p>
+            <p>{formatNumber(likes)}</p>
           </article>
         </div>
         <p className="description__text">{description}</p>
