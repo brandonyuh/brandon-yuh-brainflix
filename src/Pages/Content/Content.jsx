@@ -24,6 +24,8 @@ function Content() {
     axios.get(apiUrl + "videos" + apiParams).then((response) => {
       setVideos(response.data);
       setVideoId(response.data[0]);
+    }).catch(function (error) {
+      console.log(error);
     });
     return () => {};
   }, []);
