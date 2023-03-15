@@ -7,13 +7,28 @@ function VideoPlayer({ image, video }) {
   const videoControls = useRef();
   const playpause = useRef();
   const muteButton = useRef();
+  const currentTimeText = useRef();
+  const durationText = useRef();
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
 
+  const [duration, setDuration] = useState(0);
+
+  const formatTime = (time) => {
+    if (!time) return "0:00";
+    let minutes = Math.floor(time / 60);
+    let seconds = Math.floor(time - minutes * 60);
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    return minutes + ":" + seconds;
+  };
+
   useEffect(() => {
     videoPlayer.current.controls = false;
     videoControls.current.setAttribute("data-state", "visible");
+
+    setDuration(videoPlayer.current.duration);
+    durationText.current.innerHTML = formatTime(videoPlayer.current.duration);
 
     playpause.current.addEventListener("click", function (e) {
       if (isPlaying) {
@@ -23,6 +38,7 @@ function VideoPlayer({ image, video }) {
         videoPlayer.current.play();
         setIsPlaying(true);
       }
+      console.log(videoPlayer.current.currentTime);
     });
 
     muteButton.current.addEventListener("click", function (e) {
@@ -34,13 +50,18 @@ function VideoPlayer({ image, video }) {
         setIsMuted(true);
       }
     });
-    
-  }, [isPlaying, isMuted]);
+  }, [isPlaying, isMuted, duration]);
+
+  const handleTimeUpdate = () => {
+    // const progress = document.getElementById("progress");
+    // progress.value = videoPlayer.current.currentTime / videoPlayer.current.duration;
+          currentTimeText.current.innerHTML = formatTime(videoPlayer.current.currentTime);
+  }
 
   return (
     <>
       <div ref={videoContainer} className="video">
-        <video ref={videoPlayer} loop className="video__player" poster={image} src={video ? `${video}${apiParams}` : "https://project-2-api.herokuapp.com/stream?api_key=1"}></video>
+        <video ref={videoPlayer} loop className="video__player" poster={image} src={video ? `${video}${apiParams}` : "https://project-2-api.herokuapp.com/stream?api_key=1"} onTimeUpdate={handleTimeUpdate}></video>
         <div ref={videoControls} id="video-controls" className="video__controls" data-state="hidden">
           <button ref={playpause} type="button" data-state="play">
             Play/Pause
@@ -49,9 +70,13 @@ function VideoPlayer({ image, video }) {
             <progress className="progress__element" id="progress" value="0" min="0" max="1">
               <span id="progress__bar"></span>
             </progress>
-            <span className="progress__text progress__time">0:00</span>
+            <span ref={currentTimeText} className="progress__text progress__time">
+              0:00
+            </span>
             <span className="progress__text">/</span>
-            <span className="progress__text progress__total">0:00</span>
+            <span ref={durationText} className="progress__text progress__total">
+              0:00
+            </span>
           </div>
           <button id="fs" type="button" data-state="go-fullscreen">
             Fullscreen
