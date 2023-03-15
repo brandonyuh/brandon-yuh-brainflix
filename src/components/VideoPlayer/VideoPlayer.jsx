@@ -46,9 +46,12 @@ function VideoPlayer({ image, video }) {
             Play/Pause
           </button>
           <div className="progress">
-            <progress id="progress" value="5" min="0" max="10">
-              <span id="progress-bar"></span>x
+            <progress className="progress__element" id="progress" value="0" min="0" max="1">
+              <span id="progress__bar"></span>
             </progress>
+            <span className="progress__text progress__time">0:00</span>
+            <span className="progress__text">/</span>
+            <span className="progress__text progress__total">0:00</span>
           </div>
           <button id="fs" type="button" data-state="go-fullscreen">
             Fullscreen

@@ -18,6 +18,12 @@
     display: flex;
    }
 
+   .progress{
+    &__text{
+      color: white;
+    }
+   }
+
 
   @include tablet {
     &__player {
