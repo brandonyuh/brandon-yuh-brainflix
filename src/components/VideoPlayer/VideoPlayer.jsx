@@ -6,8 +6,10 @@ function VideoPlayer({ image, video }) {
   const videoPlayer = useRef();
   const videoControls = useRef();
   const playpause = useRef();
+  const muteButton = useRef();
 
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
     videoPlayer.current.controls = false;
@@ -22,14 +24,23 @@ function VideoPlayer({ image, video }) {
         setIsPlaying(true);
       }
     });
-  }, [isPlaying]);
+
+    muteButton.current.addEventListener("click", function (e) {
+      if (isMuted) {
+        videoPlayer.current.muted = false;
+        setIsMuted(false);
+      } else {
+        videoPlayer.current.muted = true;
+        setIsMuted(true);
+      }
+    });
+    
+  }, [isPlaying, isMuted]);
 
   return (
     <>
       <div ref={videoContainer} className="video">
-        <video ref={videoPlayer} loop className="video__player" poster={image} src={video ? `${video}${apiParams}` : "https://project-2-api.herokuapp.com/stream?api_key=1"}>
-          
-        </video>
+        <video ref={videoPlayer} loop className="video__player" poster={image} src={video ? `${video}${apiParams}` : "https://project-2-api.herokuapp.com/stream?api_key=1"}></video>
         <div ref={videoControls} id="video-controls" className="video__controls" data-state="hidden">
           <button ref={playpause} type="button" data-state="play">
             Play/Pause
@@ -42,7 +53,7 @@ function VideoPlayer({ image, video }) {
           <button id="fs" type="button" data-state="go-fullscreen">
             Fullscreen
           </button>
-          <button id="mute" type="button" data-state="mute">
+          <button ref={muteButton} id="mute" type="button" data-state="mute">
             Mute/Unmute
           </button>
         </div>
