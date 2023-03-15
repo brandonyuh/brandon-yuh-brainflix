@@ -2,7 +2,7 @@ import "./VideoPlayer.scss";
 import { useRef, useEffect, useState } from "react";
 import { apiParams } from "../../Api";
 function VideoPlayer({ image, video }) {
-  const videoContainer = useRef();
+  const videoContainer = useRef(null);
   const videoPlayer = useRef();
   const videoControls = useRef();
   const playpause = useRef();
@@ -13,10 +13,14 @@ function VideoPlayer({ image, video }) {
   const progress = useRef();
   const progressBar = useRef();
 
+  const fullScreenButton = useRef();
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
 
   const [duration, setDuration] = useState(0);
+
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
   const formatTime = (time) => {
     if (!time) return "0:00";
@@ -58,7 +62,20 @@ function VideoPlayer({ image, video }) {
       var pos = (e.pageX - (this.offsetLeft + this.offsetParent.offsetLeft)) / this.offsetWidth;
       videoPlayer.current.currentTime = pos * videoPlayer.current.duration;
     });
-  }, [isPlaying, isMuted, duration]);
+
+    fullScreenButton.current.addEventListener("click", function (e) {
+      if (!isFullScreen) {
+        videoPlayer.current.requestFullscreen();
+        setIsFullScreen(true);
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+        else if (document.webkitCancelFullScreen) document.webkitCancelFullScreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen();
+        setIsFullScreen(false);
+      }
+    });
+  }, [isPlaying, isMuted, duration, isFullScreen]);
 
   const handleTimeUpdate = () => {
     currentTimeText.current.innerHTML = formatTime(videoPlayer.current.currentTime);
@@ -70,7 +87,7 @@ function VideoPlayer({ image, video }) {
 
   return (
     <>
-      <div ref={videoContainer} className="video">
+      <div ref={videoContainer} className={"video"}>
         <video ref={videoPlayer} loop className="video__player" poster={image} src={video ? `${video}${apiParams}` : "https://project-2-api.herokuapp.com/stream?api_key=1"} onTimeUpdate={handleTimeUpdate}></video>
         <div ref={videoControls} id="video-controls" className="video__controls" data-state="hidden">
           <button ref={playpause} type="button" data-state="play">
@@ -88,7 +105,7 @@ function VideoPlayer({ image, video }) {
               0:00
             </span>
           </div>
-          <button id="fs" type="button" data-state="go-fullscreen">
+          <button ref={fullScreenButton} id="fs" type="button" data-state="go-fullscreen">
             Fullscreen
           </button>
           <button ref={muteButton} id="mute" type="button" data-state="mute">
