@@ -14,16 +14,15 @@
     max-height: 100vh;
     aspect-ratio: 16 / 9;
   }
-   &__controls{
+  &__controls {
     display: flex;
-   }
+  }
 
-   .progress{
-    &__text{
+  .progress {
+    &__text {
       color: white;
     }
-   }
-
+  }
 
   @include tablet {
     &__player {
@@ -36,5 +35,3 @@
     }
   }
 }
-
-
