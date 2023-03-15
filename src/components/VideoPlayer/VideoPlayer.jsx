@@ -10,6 +10,9 @@ function VideoPlayer({ image, video }) {
   const currentTimeText = useRef();
   const durationText = useRef();
 
+  const progress = useRef();
+  const progressBar = useRef();
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
 
@@ -29,6 +32,7 @@ function VideoPlayer({ image, video }) {
 
     setDuration(videoPlayer.current.duration);
     durationText.current.innerHTML = formatTime(videoPlayer.current.duration);
+    progress.current.setAttribute("max", videoPlayer.current.duration);
 
     playpause.current.addEventListener("click", function (e) {
       if (isPlaying) {
@@ -50,13 +54,20 @@ function VideoPlayer({ image, video }) {
         setIsMuted(true);
       }
     });
+
+    progress.current.addEventListener("click", function (e) {
+      var pos = (e.pageX - (this.offsetLeft + this.offsetParent.offsetLeft)) / this.offsetWidth;
+      videoPlayer.current.currentTime = pos * videoPlayer.current.duration;
+    });
   }, [isPlaying, isMuted, duration]);
 
   const handleTimeUpdate = () => {
-    // const progress = document.getElementById("progress");
-    // progress.value = videoPlayer.current.currentTime / videoPlayer.current.duration;
-          currentTimeText.current.innerHTML = formatTime(videoPlayer.current.currentTime);
-  }
+    currentTimeText.current.innerHTML = formatTime(videoPlayer.current.currentTime);
+
+    if (!progress.current.getAttribute("max")) progress.current.setAttribute("max", videoPlayer.current.duration);
+    progress.current.value = videoPlayer.current.currentTime;
+    progressBar.current.style.width = Math.floor((videoPlayer.current.currentTime / videoPlayer.current.duration) * 100) + "%";
+  };
 
   return (
     <>
@@ -67,8 +78,8 @@ function VideoPlayer({ image, video }) {
             Play/Pause
           </button>
           <div className="progress">
-            <progress className="progress__element" id="progress" value="0" min="0" max="1">
-              <span id="progress__bar"></span>
+            <progress ref={progress} className="progress__element" id="progress" value="0" min="0" max="1">
+              <span ref={progressBar} id="progress__bar"></span>
             </progress>
             <span ref={currentTimeText} className="progress__text progress__time">
               0:00
