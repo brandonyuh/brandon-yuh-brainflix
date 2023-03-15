@@ -42,7 +42,6 @@ function VideoPlayer({ image, video }) {
         videoPlayer.current.play();
         setIsPlaying(true);
       }
-      console.log(videoPlayer.current.currentTime);
     });
 
     muteButton.current.addEventListener("click", function (e) {
