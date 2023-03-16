@@ -90,13 +90,13 @@ function VideoPlayer({ image, video }) {
     <>
       <div ref={videoContainer} className={"video"}>
         <video ref={videoPlayer} loop className="video__player" poster={image} src={video ? `${video}${apiParams}` : "https://project-2-api.herokuapp.com/stream?api_key=1"} onTimeUpdate={handleTimeUpdate}></video>
-        <div ref={videoControls} id="video-controls" className="video__controls" data-state="hidden">
+        <div ref={videoControls} className="video__controls">
           <div className="video__controls--group">
             <button ref={playpause} className={isPlaying ? "video__button video__button--pause" : "video__button video__button--play"} type="image"></button>
           </div>
           <div className="progress video__controls--group">
             <progress ref={progress} className="progress__element" id="progress" value="0" min="0" max="1">
-              <span ref={progressBar} id="progress__bar"></span>
+              <span ref={progressBar}></span>
             </progress>
             <span ref={currentTimeText} className="progress__text progress__time">
               0:00
@@ -107,8 +107,8 @@ function VideoPlayer({ image, video }) {
             </span>
           </div>
           <span className="video__controls--group">
-            <button ref={fullScreenButton} className="video__button video__button--fullscreen" id="fs" type="image"></button>
-            <button ref={muteButton} className={isMuted ? "video__button video__button--unmute" : "video__button video__button--mute"} id="mute" type="image"></button>
+            <button ref={fullScreenButton} className="video__button video__button--fullscreen" type="image"></button>
+            <button ref={muteButton} className={isMuted ? "video__button video__button--unmute" : "video__button video__button--mute"} type="image"></button>
           </span>
         </div>
       </div>
