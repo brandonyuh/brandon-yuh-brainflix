@@ -9,15 +9,17 @@ function Header() {
       <Link to="/" className="header__logo">
         <img className="header__img" src={Logo} alt="BrainFlix Logo" />
       </Link>
-      <div className="header__search">
-        <input className="header__input" type="search" placeholder="Search" />
+      <div className="header__menu">
+        <div className="header__search">
+          <input className="header__input" type="search" placeholder="Search" />
+        </div>
+        <div className="header__profile">
+          <img className="header__icon" src={ProfileIcon} alt="BrainFlix Logo" />
+        </div>
+        <Link to="/upload" className="button header__upload button--text">
+          Upload
+        </Link>
       </div>
-      <div className="header__profile">
-        <img className="header__icon" src={ProfileIcon} alt="BrainFlix Logo" />
-      </div>
-      <Link to="/upload" className="button header__upload button--text">
-        Upload
-      </Link>
     </header>
   );
 }

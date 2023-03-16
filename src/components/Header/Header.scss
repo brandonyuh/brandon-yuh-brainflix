@@ -2,18 +2,132 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
+// .header {
+//   background-color: $background;
+//   display: flex;
+//   flex-wrap: wrap;
+//   padding: 1rem $padding-default;
+//   justify-content: space-between;
+//   align-items: center;
+//   &__logo {
+//     width: 100%;
+//     display: flex;
+//     justify-content: center;
+//     margin-bottom: 1rem;
+//   }
+//   &__search {
+//     width: 83%;
+//   }
+//   &__input {
+//     width: 100%;
+//     padding: 10px;
+//     padding-left: 38px;
+//     border: $input-border;
+//     font-size: 0.7rem;
+//     background-image: url("../../assets/images/search.svg");
+//     background-repeat: no-repeat;
+//     background-position: 10px center;
+//     font-weight: $font-bold;
+//     border-radius: $border-radius;
+//     background-color: $input-background;
+//     margin-bottom: 1rem;
+//     &::placeholder {
+//       color: $font-dark;
+//       opacity: 1;
+//     }
+//   }
+//   &__profile {
+//     margin: 0;
+//     position: relative;
+//     top: -0.4rem;
+//   }
+//   &__icon {
+//     width: 36px;
+//     height: 36px;
+//     border-radius: 50%;
+//     object-fit: cover;
+//     object-position: 30% 80%;
+//     margin: 0;
+//   }
+
+//   &__upload {
+//     width: 100%;
+//     background-image: url("../../assets/images/upload.svg");
+//     background-repeat: no-repeat;
+//     background-position: 10px center;
+//     background-size: 20px;
+//     margin-bottom: 0.3rem;
+//     text-decoration: none;
+//     font-size: 0.7rem;
+
+//     &:hover {
+//       cursor: pointer;
+//       background-color: $button-hover;
+//     }
+//   }
+//   @include tablet {
+//     flex-wrap: nowrap;
+//     gap: 5%;
+//     &__img {
+//       width: 120px;
+//     }
+//     &__logo {
+//       justify-content: flex-start;
+//       margin: 0;
+//       margin-left: 1%;
+//     }
+
+//     &__profile {
+//       order: 1;
+//       margin: 0;
+//       top: 2px;
+//     }
+
+//     &__input {
+//       margin: 0;
+//       margin-left: -2.5rem;
+//       width: 15rem;
+//     }
+//     &__upload {
+//       width: 25rem;
+//       margin: 0;
+//       padding-left: 25px;
+//     }
+
+//     &__icon {
+//       margin-left: -1rem;
+//       width: 40px;
+//       height: 40px;
+//     }
+//   }
+
+//   @include desktop {
+//     &__logo {
+//       margin-left: 7%;
+//     }
+//     &__input {
+//       margin-left: 25%;
+//       flex-grow: 1;
+//     }
+//     &__upload {
+//       width: 30%;
+//       margin: 0;
+//     }
+//     &__icon {
+//       margin-right: 5rem;
+//     }
+//   }
+// }
+
 .header {
-  background-color: $background;
+  padding: 1rem;
   display: flex;
-  flex-wrap: wrap;
-  padding: 1rem $padding-default;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  &__logo {
-    width: 100%;
+  gap: 0.6rem;
+  &__menu {
     display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+    flex-wrap: wrap;
   }
   &__search {
     width: 83%;
@@ -36,12 +150,11 @@
       opacity: 1;
     }
   }
-  &__profile {
-    margin: 0;
-    position: relative;
-    top: -0.4rem;
-  }
+
   &__icon {
+    position: relative;
+    top: -0.1rem;
+    left: 0.8rem;
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -57,64 +170,12 @@
     background-position: 10px center;
     background-size: 20px;
     margin-bottom: 0.3rem;
-    text-decoration: none; 
-    font-size: 0.7rem; 
+    text-decoration: none;
+    font-size: 0.7rem;
 
     &:hover {
       cursor: pointer;
       background-color: $button-hover;
-    }
-  }
-  @include tablet {
-    flex-wrap: nowrap;
-    gap: 5%;
-    &__img {
-      width: 120px;
-    }
-    &__logo {
-      justify-content: flex-start;
-      margin: 0;
-      margin-left: 1%;
-    }
-
-    &__profile {
-      order: 1;
-      margin: 0;
-      top: 2px;
-    }
-
-    &__input {
-      margin: 0;
-      margin-left: -2.5rem;
-      width: 15rem;
-    }
-    &__upload {
-      width: 25rem;
-      margin: 0;
-      padding-left: 25px;
-    }
-
-    &__icon {
-      margin-left: -1rem;
-      width: 40px;
-      height: 40px;
-    }
-  }
-
-  @include desktop {
-    &__logo {
-      margin-left: 7%;
-    }
-    &__input {
-      margin-left: 25%;
-      flex-grow: 1;
-    }
-    &__upload {
-      width: 30%;
-      margin: 0;
-    }
-    &__icon {
-      margin-right: 5rem;
     }
   }
 }
