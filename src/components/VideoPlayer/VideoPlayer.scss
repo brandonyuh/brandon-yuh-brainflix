@@ -95,6 +95,43 @@
     &__player {
       height: 24rem;
     }
+    &__controls {
+      height: 40px;
+      bottom: 15px;
+      padding: 0 3rem;
+      gap: 0.5rem;
+    }
+    &__button {
+      width: 1.5rem;
+      height: 0.8rem;
+      margin: 0 0.5rem;
+      &--play {
+        background-size: 0.7rem;
+        background-position: 7px 0px;
+      }
+      &--pause {
+        background-size: 1rem;
+        background-position: 3px -2px;
+      }
+      &--fullscreen {
+        background-size: 1.3rem;
+        background-position: 5px -4px;
+      }
+      &--mute {
+        background-size: 1.7rem;
+        background-position: -3px -7px;
+      }
+      &--unmute {
+        background-size: 1.7rem;
+        background-position: -3px -7px;
+      }
+    }
+    .progress{
+      padding: 0 1rem;
+      &__text {
+        font-size: 0.5rem;
+      }
+    }
   }
   @include desktop {
     &__player {
