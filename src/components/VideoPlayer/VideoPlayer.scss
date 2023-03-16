@@ -41,8 +41,21 @@
     padding: 0 0.5rem;
     gap: 0.15rem;
     width: 100%;
+    border-radius: $border-radius;
     &__element {
+      position: relative;
+      top: 2px;
       width: 100%;
+      border-radius: $border-radius;
+      &::-webkit-progress-value {
+        background-color: $progress-color;
+        border: 0;
+      }
+      &::-webkit-progress-bar {
+        border: 0;
+        height: 3px;
+        border-radius: $border-radius;
+      }
     }
     &__text {
       font-size: 0.35rem;
