@@ -110,8 +110,8 @@
         background-position: 7px 0px;
       }
       &--pause {
-        background-size: 1rem;
-        background-position: 3px -2px;
+        background-size: 1.3rem;
+        background-position: 2px -3px;
       }
       &--fullscreen {
         background-size: 1.3rem;
@@ -126,7 +126,7 @@
         background-position: -3px -7px;
       }
     }
-    .progress{
+    .progress {
       padding: 0 1rem;
       &__text {
         font-size: 0.5rem;
@@ -136,6 +136,10 @@
   @include desktop {
     &__player {
       height: 30rem;
+    }
+    &__controls {
+      padding: 0 14rem;
+      gap: 1.1rem;
     }
   }
 }
