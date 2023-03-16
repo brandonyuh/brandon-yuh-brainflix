@@ -11,6 +11,7 @@ function Upload() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [selectedImage, setSelectedImage] = useState(undefined);
+  const [triedToSubmit, setTriedToSubmit] = useState(false);
 
   const handleChangeTitle = (event) => {
     setTitle(event.target.value);
@@ -21,14 +22,16 @@ function Upload() {
 
   const handleChangeImage = (event) => {
     setSelectedImage(event.target.files[0]);
-  }
+  };
 
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setTriedToSubmit(true);
+
     if (!title || !description) {
-      alert("Please fill out all fields");
+      //video is not valid
       return;
     }
     const newVideo = new FormData();
@@ -78,9 +81,9 @@ function Upload() {
           </div>
           <div className="upload__inputs">
             <label className="label upload__label">Title your video</label>
-            <input className="textbox upload__input" type="text" placeholder="Add a title to your video" onChange={handleChangeTitle} value={title} />
+            <input className={triedToSubmit && title.length === 0 ? "textbox upload__input invalid" : "textbox upload__input"} type="text" placeholder="Add a title to your video" onChange={handleChangeTitle} value={title} />
             <label className="label upload__label">Add a video description</label>
-            <textarea className="textbox upload__input upload__input--description" rows="4" placeholder="Add a description to your video" onChange={handleChangeDescription} value={description} />
+            <textarea className={triedToSubmit && description.length === 0 ? "textbox upload__input upload__input--description invalid" : "textbox upload__input upload__input--description"} rows="4" placeholder="Add a description to your video" onChange={handleChangeDescription} value={description} />
           </div>
         </section>
         <section className="upload__buttons">
