@@ -7,21 +7,19 @@ import { apiUrl, apiParams } from "../../Api";
 
 function VideoComments({ comments, id, getVideo }) {
   const [newComment, setNewComment] = useState("");
-  const [isCommentEmpty, setIsCommentEmpty] = useState(false);
+  const [triedToSubmit, setTriedToSubmit] = useState(false);
 
   const handleChangeNewComment = (event) => {
-    setIsCommentEmpty(newComment.length === 0);
     setNewComment(event.target.value);
   };
 
   const isCommentValid = () => {
-    setIsCommentEmpty(newComment.length === 0);
     return newComment.length > 0;
   };
 
   const handleSubmit = (event) => {
-    setIsCommentEmpty(newComment.length === 0);
     event.preventDefault();
+    setTriedToSubmit(true);
     if (!isCommentValid()) {
       return;
     }
@@ -70,7 +68,7 @@ function VideoComments({ comments, id, getVideo }) {
             Join the conversation
           </label>
           <div className="comment__data comment__add">
-            <textarea className={`textbox comment__input ${isCommentEmpty && newComment.length === 0 ? "invalid" : ""}`} name="addcomment" id="addcomment" cols="30" rows="5" placeholder="Add a new comment" onChange={handleChangeNewComment} value={newComment}></textarea>
+            <textarea className={`textbox comment__input ${triedToSubmit && newComment.length === 0 ? "invalid" : ""}`} name="addcomment" id="addcomment" cols="30" rows="5" placeholder="Add a new comment" onChange={handleChangeNewComment} value={newComment}></textarea>
             <button type="submit" className="button comment__button">
               Comment
             </button>
