@@ -7,7 +7,7 @@ import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
 import VideoDescription from "../../components/VideoDescription/VideoDescription";
 import VideoComments from "../../components/VideoComments/VideoComments";
 import VideoList from "../../components/VideoList/VideoList";
-import { apiUrl, apiParams } from "../../Api";
+import { apiUrl, apiParams, backupUrl , backupParams} from "../../Api";
 
 function Content() {
   let { videoPageId } = useParams();
@@ -25,7 +25,13 @@ function Content() {
       setVideos(response.data);
       setVideoId(response.data[0]);
     }).catch(function (error) {
-      console.log(error);
+      console.warn(error, "Getting videos from API failed, trying backup API...");
+      axios.get(backupUrl + "videos" + backupParams).then((response) => {
+        setVideos(response.data);
+        setVideoId(response.data[0]);
+      }).catch(function (error) {
+        console.log(error, "Getting videos from backup API failed.");
+      });
     });
     return () => {};
   }, []);
@@ -45,6 +51,17 @@ function Content() {
           if (videoPageId) {
             const noVideo = { title: "Video not found!", channel: "Nobody👻", views: "0", likes: "0", description: "This video does not exist." };
             setVideo(noVideo);
+          } else {
+            console.warn(error, "Getting video from API failed, trying backup API...");
+            alert("Backend API is down, using backup API. Some features may not work.");
+            axios
+              .get(backupUrl + "videos/" + id + backupParams)
+              .then((response) => {
+                setVideo(response.data);
+              })
+              .catch(function (error) {
+                console.log(error, "Getting video from backup API failed.");
+              });
           }
         });
     },

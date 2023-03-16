@@ -1,6 +1,6 @@
 import "./VideoPlayer.scss";
 import { useRef, useEffect, useState } from "react";
-import { apiParams } from "../../Api";
+import { backupParams } from "../../Api";
 
 function VideoPlayer({ image, video }) {
   const fallbackVideoUrl = "https://project-2-api.herokuapp.com/stream?api_key=1";
@@ -90,7 +90,7 @@ function VideoPlayer({ image, video }) {
   return (
     <>
       <div ref={videoContainer} className={"video"}>
-        <video ref={videoPlayer} loop className="video__player" poster={image} src={video ? `${video}${apiParams}` : fallbackVideoUrl} onTimeUpdate={handleTimeUpdate}></video>
+        <video ref={videoPlayer} loop className="video__player" poster={image} src={video ? `${video}${backupParams}` : `${fallbackVideoUrl}`} onTimeUpdate={handleTimeUpdate}></video>
         <div ref={videoControls} className="video__controls">
           <div className="video__controls--group">
             <button ref={playpause} className={isPlaying ? "video__button video__button--pause" : "video__button video__button--play"} type="image"></button>
