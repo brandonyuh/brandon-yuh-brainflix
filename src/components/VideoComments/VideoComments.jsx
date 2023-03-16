@@ -70,7 +70,7 @@ function VideoComments({ comments, id, getVideo }) {
             Join the conversation
           </label>
           <div className="comment__data comment__add">
-            <textarea className={`textbox comment__input ${isCommentEmpty ? "invalid" : ""}`} name="addcomment" id="addcomment" cols="30" rows="5" placeholder="Add a new comment" onChange={handleChangeNewComment} value={newComment}></textarea>
+            <textarea className={`textbox comment__input ${isCommentEmpty && newComment.length === 0 ? "invalid" : ""}`} name="addcomment" id="addcomment" cols="30" rows="5" placeholder="Add a new comment" onChange={handleChangeNewComment} value={newComment}></textarea>
             <button type="submit" className="button comment__button">
               Comment
             </button>
