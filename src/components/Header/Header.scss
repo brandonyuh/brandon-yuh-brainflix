@@ -209,4 +209,14 @@
       width: 16rem;
     }
   }
+  @include desktop {
+    padding-left: 8rem;
+    padding-right: 8rem;
+    &__menu {
+      gap: 2rem;
+    }
+    &__upload {
+      width: 9rem;
+    }
+  }
 }
